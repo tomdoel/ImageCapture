@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,23 +12,23 @@
 
 =============================================================================*/
 
-#ifndef mpMyFunctions_h
-#define mpMyFunctions_h
+#ifndef captureMyFunctions_h
+#define captureMyFunctions_h
 
-#include "mpWin32ExportHeader.h"
+#include "captureWin32ExportHeader.h"
 
 /**
-* \file mpMyFunctions.h
+* \file captureMyFunctions.h
 * \brief Various Utilities.
 * \ingroup utilities
 */
-namespace mp
+namespace capture
 {
 
 /**
 * \brief My first function, adds two integers.
 */
-MYPROJECT_WINEXPORT int MyFirstAddFunction(int a, int b);
+IMAGECAPTURE_WINEXPORT int MyFirstAddFunction(int a, int b);
 
 } // end namespace
 

@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -11,8 +11,8 @@
   See LICENSE.txt in the top level directory for details.
 
 =============================================================================*/
-#include "mpMainWindow.h"
-#include <mpExceptionMacro.h>
+#include "captureMainWindow.h"
+#include <captureExceptionMacro.h>
 
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
@@ -23,15 +23,15 @@
 
 #include <cassert>
 
-namespace mp
+namespace capture
 {
 
 //-----------------------------------------------------------------------------
-MainWindow::MainWindow(mp::VolumeRenderingModel* model)
+MainWindow::MainWindow(capture::VolumeRenderingModel* model)
 {
   if (model == nullptr)
   {
-    mpExceptionThrow() << "Model is null.";
+    captureExceptionThrow() << "Model is null.";
   }
 
   setupUi(this);

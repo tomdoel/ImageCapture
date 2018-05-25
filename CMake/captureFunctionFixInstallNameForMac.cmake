@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,7 +12,7 @@
 #
 #============================================================================*/
 
-function(mpFunctionFixInstallNameForMac dir)
+function(captureFunctionFixInstallNameForMac dir)
   file(GLOB dylibFiles ${dir}/lib/*.dylib)
   foreach(_dylib ${dylibFiles})
      message("Fixing install name for lib: ${_dylib}")

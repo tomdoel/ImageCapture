@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,22 +12,22 @@
 
 =============================================================================*/
 
-#ifndef mpQtVTKViewWin32ExportHeader_h
-#define mpQtVTKViewWin32ExportHeader_h
+#ifndef captureQtVTKViewWin32ExportHeader_h
+#define captureQtVTKViewWin32ExportHeader_h
 
 /**
-* \file mpQtVTKViewWin32ExportHeader.h
+* \file captureQtVTKViewWin32ExportHeader.h
 * \brief Header to sort Windows dllexport/dllimport.
 */
 
-#if (defined(_WIN32) || defined(WIN32)) && !defined(MYPROJECT_STATIC)
-  #ifdef MYPROJECT_QTVTKVIEW_WINDOWS_EXPORT
-    #define MYPROJECT_QTVTKVIEWWINEXPORT __declspec(dllexport)
+#if (defined(_WIN32) || defined(WIN32)) && !defined(IMAGECAPTURE_STATIC)
+  #ifdef IMAGECAPTURE_QTVTKVIEW_WINDOWS_EXPORT
+    #define IMAGECAPTURE_QTVTKVIEWWINEXPORT __declspec(dllexport)
   #else
-    #define MYPROJECT_QTVTKVIEWWINEXPORT __declspec(dllimport)
+    #define IMAGECAPTURE_QTVTKVIEWWINEXPORT __declspec(dllimport)
   #endif
 #else
-  #define MYPROJECT_QTVTKVIEWWINEXPORT
+  #define IMAGECAPTURE_QTVTKVIEWWINEXPORT
 #endif
 
 #endif

@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,7 +12,7 @@
 #
 #============================================================================*/
 
-if(MYPROJECT_USE_QT)
+if(IMAGECAPTURE_USE_QT)
   set(_qt_components Core Concurrent PrintSupport Script Sql Svg Xml XmlPatterns)
   if(BUILD_QtVTKDemo OR BUILD_QOpenGLDemo)
     list(APPEND _qt_components OpenGL Gui Widgets UiTools Help)
@@ -37,7 +37,7 @@ if(MYPROJECT_USE_QT)
     if(_result LESS 0)
       set(CMAKE_PREFIX_PATH "${_Qt5_DIR};${CMAKE_PREFIX_PATH}" CACHE PATH "" FORCE)
     endif()
-    set(MYPROJECT_PREFIX_PATH ${_Qt5_DIR})
+    set(IMAGECAPTURE_PREFIX_PATH ${_Qt5_DIR})
     foreach(_component ${_qt_components})
       find_package(Qt5${_component} REQUIRED QUIET)
       include_directories(${Qt5${_component}_INCLUDE_DIRS})
@@ -73,6 +73,6 @@ if(MYPROJECT_USE_QT)
   endif()
 endif()
 
-if(MYPROJECT_USE_QT AND NOT Qt5_DIR)
+if(IMAGECAPTURE_USE_QT AND NOT Qt5_DIR)
   message(FATAL_ERROR "Qt was required but not found")
 endif()

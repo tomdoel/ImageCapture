@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,9 +12,9 @@
 #
 #============================================================================*/
 
-configure_file(${CMAKE_SOURCE_DIR}/UseMyProject.cmake.in ${CMAKE_BINARY_DIR}/UseMyProject.cmake @ONLY IMMEDIATE)
-configure_file(${CMAKE_SOURCE_DIR}/MyProjectConfig.cmake.in ${CMAKE_BINARY_DIR}/MyProjectConfig.cmake @ONLY IMMEDIATE)
+configure_file(${CMAKE_SOURCE_DIR}/UseImageCapture.cmake.in ${CMAKE_BINARY_DIR}/UseImageCapture.cmake @ONLY IMMEDIATE)
+configure_file(${CMAKE_SOURCE_DIR}/ImageCaptureConfig.cmake.in ${CMAKE_BINARY_DIR}/ImageCaptureConfig.cmake @ONLY IMMEDIATE)
 if(NOT BUILDING_GUIS)
-  install(FILES ${CMAKE_BINARY_DIR}/UseMyProject.cmake DESTINATION . COMPONENT CONFIG)
-  install(FILES ${CMAKE_BINARY_DIR}/MyProjectConfig.cmake DESTINATION . COMPONENT CONFIG)
+  install(FILES ${CMAKE_BINARY_DIR}/UseImageCapture.cmake DESTINATION . COMPONENT CONFIG)
+  install(FILES ${CMAKE_BINARY_DIR}/ImageCaptureConfig.cmake DESTINATION . COMPONENT CONFIG)
 endif()

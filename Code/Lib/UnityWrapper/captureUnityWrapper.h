@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,7 +12,7 @@
 
 =============================================================================*/
 /**
-* \file mpUnityWrapper.h
+* \file captureUnityWrapper.h
 * \brief Wrapper for Unity3D to load simple functionality as plugin.
 * \ingroup utilities
 *
@@ -29,7 +29,7 @@
 extern "C" {
 
 /**
- * \brief C-style wrapper for mp::MyFirstAddFunction
+ * \brief C-style wrapper for capture::MyFirstAddFunction
  */
 int AddTwoIntegers(int a, int b);
 

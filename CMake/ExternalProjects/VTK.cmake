@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -53,8 +53,8 @@ if(NOT DEFINED VTK_DIR)
 
   # Optionally enable memory leak checks for any objects derived from vtkObject. This
   # will force unit tests to fail if they have any of these memory leaks.
-  option(MYPROJECT_VTK_DEBUG_LEAKS OFF)
-  mark_as_advanced(MYPROJECT_VTK_DEBUG_LEAKS)
+  option(IMAGECAPTURE_VTK_DEBUG_LEAKS OFF)
+  mark_as_advanced(IMAGECAPTURE_VTK_DEBUG_LEAKS)
   list(APPEND additional_cmake_args
        -DVTK_DEBUG_LEAKS:BOOL=${MITK_VTK_DEBUG_LEAKS}
       )
@@ -64,7 +64,7 @@ if(NOT DEFINED VTK_DIR)
        -DVTK_WINDOWS_PYTHON_DEBUGGABLE:BOOL=OFF
       )
 
-  if(Qt5_DIR AND MYPROJECT_USE_QT)
+  if(Qt5_DIR AND IMAGECAPTURE_USE_QT)
     list(APPEND additional_cmake_args
         -DVTK_QT_VERSION:STRING=5
         -DVTK_Group_Qt:BOOL=ON
@@ -96,7 +96,7 @@ if(NOT DEFINED VTK_DIR)
     CMAKE_GENERATOR ${gen}
     CMAKE_ARGS
         ${EP_COMMON_ARGS}
-        -DCMAKE_PREFIX_PATH:PATH=${MYPROJECT_PREFIX_PATH}
+        -DCMAKE_PREFIX_PATH:PATH=${IMAGECAPTURE_PREFIX_PATH}
         -DVTK_WRAP_TCL:BOOL=OFF
         -DVTK_WRAP_PYTHON:BOOL=OFF
         -DVTK_WRAP_JAVA:BOOL=OFF
@@ -115,7 +115,7 @@ if(NOT DEFINED VTK_DIR)
   )
 
   set(VTK_DIR ${proj_INSTALL})
-  set(MYPROJECT_PREFIX_PATH ${proj_INSTALL}^^${MYPROJECT_PREFIX_PATH})
+  set(IMAGECAPTURE_PREFIX_PATH ${proj_INSTALL}^^${IMAGECAPTURE_PREFIX_PATH})
   mitkFunctionInstallExternalCMakeProject(${proj})
 
   message("SuperBuild loading VTK from ${VTK_DIR}")

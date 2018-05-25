@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -15,16 +15,16 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QSurfaceFormat>
-#include "MyProjectConfigure.h"
-#include "mpOpenGLWidget.h"
-#include "mpOpenGLMainWindow.h"
+#include "ImageCaptureConfigure.h"
+#include "captureOpenGLWidget.h"
+#include "captureOpenGLMainWindow.h"
 
 int main(int argc, char *argv[])
 {
   QApplication app(argc, argv);
   app.setOrganizationName("UCL");
   app.setApplicationName("QOpenGLDemo");
-  app.setApplicationVersion(QString(MYPROJECT_VERSION_STRING));
+  app.setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
 
   QSurfaceFormat fmt;
   fmt.setDepthBufferSize(24);
@@ -32,9 +32,9 @@ int main(int argc, char *argv[])
   fmt.setProfile(QSurfaceFormat::CoreProfile);
   QSurfaceFormat::setDefaultFormat(fmt);
 
-  mp::OpenGLMainWindow mainWindow;
-  mp::OpenGLWidget::setTransparent(false);
-  if (mp::OpenGLWidget::isTransparent())
+  capture::OpenGLMainWindow mainWindow;
+  capture::OpenGLWidget::setTransparent(false);
+  if (capture::OpenGLWidget::isTransparent())
   {
     mainWindow.setAttribute(Qt::WA_TranslucentBackground);
     mainWindow.setAttribute(Qt::WA_NoSystemBackground, false);

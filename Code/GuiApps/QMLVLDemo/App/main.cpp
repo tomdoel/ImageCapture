@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,8 +12,8 @@
 
 =============================================================================*/
 #include <vlCore/VisualizationLibrary.hpp>
-#include "mpTriangleModel.h"
-#include "MyProjectConfigure.h"
+#include "captureTriangleModel.h"
+#include "ImageCaptureConfigure.h"
 
 #include <QGuiApplication>
 #include <QtQuick/QQuickView>
@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
   QGuiApplication app(argc, argv);
   app.setOrganizationName("UCL");
   app.setApplicationName("QMLVLDemo");
-  app.setApplicationVersion(QString(MYPROJECT_VERSION_STRING));
+  app.setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
 
-  qmlRegisterType<mp::TriangleModel>("VLUnderQML", 1, 0, "TriangleModel");
+  qmlRegisterType<capture::TriangleModel>("VLUnderQML", 1, 0, "TriangleModel");
 
   /* init Visualization Library */
   vl::VisualizationLibrary::init();

@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,30 +12,30 @@
 #
 #============================================================================*/
 
-set(MYPROJECT_LIBRARY_NAME myproject)
+set(IMAGECAPTURE_LIBRARY_NAME imagecapture)
 
-set(MYPROJECT_LIBRARY_SRCS
-  mpBasicTypes.cpp
-  mpMyFunctions.cpp
-  mpException.cpp
+set(IMAGECAPTURE_LIBRARY_SRCS
+  captureBasicTypes.cpp
+  captureMyFunctions.cpp
+  captureException.cpp
 )
 
-set(MYPROJECT_LIBRARY_HDRS
-  mpExceptionMacro.h
+set(IMAGECAPTURE_LIBRARY_HDRS
+  captureExceptionMacro.h
 )
 
-add_library(${MYPROJECT_LIBRARY_NAME} ${MYPROJECT_LIBRARY_HDRS} ${MYPROJECT_LIBRARY_SRCS})
+add_library(${IMAGECAPTURE_LIBRARY_NAME} ${IMAGECAPTURE_LIBRARY_HDRS} ${IMAGECAPTURE_LIBRARY_SRCS})
 
 if(BUILD_SHARED_LIBS)
   if(WIN32)
-    add_definitions(-DMYPROJECT_WINDOWS_EXPORT)
+    add_definitions(-DIMAGECAPTURE_WINDOWS_EXPORT)
   endif(WIN32)
 endif(BUILD_SHARED_LIBS)
 
-target_link_libraries(${MYPROJECT_LIBRARY_NAME} PRIVATE ${ALL_THIRD_PARTY_LIBRARIES})
+target_link_libraries(${IMAGECAPTURE_LIBRARY_NAME} PRIVATE ${ALL_THIRD_PARTY_LIBRARIES})
 
-MYPROJECT_INSTALL_HEADERS()
-MYPROJECT_INSTALL_LIBRARY(${MYPROJECT_LIBRARY_NAME})
+IMAGECAPTURE_INSTALL_HEADERS()
+IMAGECAPTURE_INSTALL_LIBRARY(${IMAGECAPTURE_LIBRARY_NAME})
 
 if(BUILD_Python_Boost)
   add_subdirectory(PythonBoost)

@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,7 +12,7 @@
 #
 #============================================================================*/
 
-set(CTEST_PROJECT_NAME "MYPROJECT")
+set(CTEST_PROJECT_NAME "IMAGECAPTURE")
 set(CTEST_NIGHTLY_START_TIME "20:00:00 GMT")
 set(CTEST_TEST_TIMEOUT "3600")
 
@@ -22,7 +22,7 @@ endif(NOT DEFINED CTEST_DROP_METHOD)
 
 if(CTEST_DROP_METHOD STREQUAL "http")
   set(CTEST_DROP_SITE "cdash.cmiclab.cs.ucl.ac.uk")
-  set(CTEST_DROP_LOCATION "/submit.php?project=MYPROJECT")
+  set(CTEST_DROP_LOCATION "/submit.php?project=IMAGECAPTURE")
   set(CTEST_DROP_SITE_CDASH TRUE)
 endif(CTEST_DROP_METHOD STREQUAL "http")
 

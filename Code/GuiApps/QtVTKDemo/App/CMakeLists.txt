@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -15,18 +15,18 @@
 set(APP_NAME QtVTKDemo)
 
 set(APP_UIS
-  mpMainWindow.ui
-  mpCentralWidget.ui
+  captureMainWindow.ui
+  captureCentralWidget.ui
 )
 
 set(APP_SRCS
-  mpMainWindow.cpp
-  mpCentralWidget.cpp
+  captureMainWindow.cpp
+  captureCentralWidget.cpp
 )
 
 set(APP_MOC_HDRS
-  mpMainWindow.h
-  mpCentralWidget.h
+  captureMainWindow.h
+  captureCentralWidget.h
 )
 
 set(APP_HDRS
@@ -53,11 +53,11 @@ add_executable(${APP_NAME} MACOSX_BUNDLE
 )
 
 set(APP_LIBS
-  myproject
+  imagecapture
   qtvtkmodel
   qtvtkview
   qtvtkcontroller
 )
 
 target_link_libraries(${APP_NAME} ${APP_LIBS} ${ALL_THIRD_PARTY_LIBRARIES} ${QT5_LINK_LIBRARIES})
-mpMacroCreateGuiApplication(${APP_NAME} "${ADDITIONAL_SEARCH_PATHS}")
+captureMacroCreateGuiApplication(${APP_NAME} "${ADDITIONAL_SEARCH_PATHS}")

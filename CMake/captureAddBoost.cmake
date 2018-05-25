@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -15,11 +15,11 @@
 option(BUILD_Boost "Build Boost." OFF)
 
 if(BUILD_Boost)
-  list(APPEND MYPROJECT_BOOST_LIBS "filesystem")
-  list(APPEND MYPROJECT_BOOST_LIBS "system")
-  list(APPEND MYPROJECT_BOOST_LIBS "date_time")
-  list(APPEND MYPROJECT_BOOST_LIBS "regex")
-  list(APPEND MYPROJECT_BOOST_LIBS "thread")
-  list(APPEND MYPROJECT_BOOST_LIBS "iostreams")
-  list(APPEND MYPROJECT_BOOST_LIBS "program_options")
+  list(APPEND IMAGECAPTURE_BOOST_LIBS "filesystem")
+  list(APPEND IMAGECAPTURE_BOOST_LIBS "system")
+  list(APPEND IMAGECAPTURE_BOOST_LIBS "date_time")
+  list(APPEND IMAGECAPTURE_BOOST_LIBS "regex")
+  list(APPEND IMAGECAPTURE_BOOST_LIBS "thread")
+  list(APPEND IMAGECAPTURE_BOOST_LIBS "iostreams")
+  list(APPEND IMAGECAPTURE_BOOST_LIBS "program_options")
 endif()

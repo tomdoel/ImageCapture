@@ -1,6 +1,6 @@
 /*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -27,11 +27,11 @@
 #if !defined(__APPLE__)
   #cmakedefine CMAKE_WORDS_BIGENDIAN 
   #ifdef CMAKE_WORDS_BIGENDIAN
-    #define MYPROJECT_WORDS_BIGENDIAN
+    #define IMAGECAPTURE_WORDS_BIGENDIAN
   #endif
 #elif defined(__BIG_ENDIAN__)
   #define CMAKE_WORDS_BIGENDIAN
-  #define MYPROJECT_WORDS_BIGENDIAN
+  #define IMAGECAPTURE_WORDS_BIGENDIAN
 #endif
 
 
@@ -47,29 +47,29 @@
 /* what threading system are we using */
 #cmakedefine CMAKE_USE_PTHREADS
 #ifdef CMAKE_USE_PTHREADS
-#define MYPROJECT_USE_PTHREADS
+#define IMAGECAPTURE_USE_PTHREADS
 #endif
 
 #cmakedefine CMAKE_USE_SPROC
 #ifdef CMAKE_USE_SPROC
-#define MYPROJECT_USE_SPROC
+#define IMAGECAPTURE_USE_SPROC
 #endif
 
 #cmakedefine CMAKE_HP_PTHREADS
 #ifdef CMAKE_HP_PTHREADS
-#define MYPROJECT_HP_PTHREADS
+#define IMAGECAPTURE_HP_PTHREADS
 #endif
 
 #cmakedefine CMAKE_USE_WIN32_THREADS
 #ifdef CMAKE_USE_WIN32_THREADS
-#define MYPROJECT_USE_WIN32_THREADS
+#define IMAGECAPTURE_USE_WIN32_THREADS
 #endif
 
-#cmakedefine MYPROJECT_BUILD_SHARED_LIBS
-#ifdef MYPROJECT_BUILD_SHARED_LIBS
-#define MYPROJECTDLL
+#cmakedefine IMAGECAPTURE_BUILD_SHARED_LIBS
+#ifdef IMAGECAPTURE_BUILD_SHARED_LIBS
+#define IMAGECAPTUREDLL
 #else
-#define MYPROJECTSTATIC
+#define IMAGECAPTURESTATIC
 #endif
 
 #cmakedefine CMAKE_NO_STD_NAMESPACE
@@ -77,10 +77,10 @@
 #cmakedefine CMAKE_NO_ANSI_STRING_STREAM
 #cmakedefine CMAKE_NO_ANSI_FOR_SCOPE
 
-#define MYPROJECT_VERSION_MAJOR @MYPROJECT_VERSION_MAJOR@
-#define MYPROJECT_VERSION_MINOR @MYPROJECT_VERSION_MINOR@
-#define MYPROJECT_VERSION_PATCH @MYPROJECT_VERSION_PATCH@
-#define MYPROJECT_VERSION_STRING "@MYPROJECT_VERSION_STRING@"
+#define IMAGECAPTURE_VERSION_MAJOR @IMAGECAPTURE_VERSION_MAJOR@
+#define IMAGECAPTURE_VERSION_MINOR @IMAGECAPTURE_VERSION_MINOR@
+#define IMAGECAPTURE_VERSION_PATCH @IMAGECAPTURE_VERSION_PATCH@
+#define IMAGECAPTURE_VERSION_STRING "@IMAGECAPTURE_VERSION_STRING@"
 
 /* Specific platform checks */
 #cmakedefine HAVE_MKSTEMPS

@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -16,7 +16,7 @@
 # Put .cpp files here.
 #########################
 set(QTVTKCONTROLLER_SRCS
-  mpVolumeRenderingModel.cpp
+  captureVolumeRenderingModel.cpp
 )
 
 
@@ -24,7 +24,7 @@ set(QTVTKCONTROLLER_SRCS
 # Put .h files that need moc here.
 ###################################
 SET(QTVTKCONTROLLER_MOC_HDRS
-  mpVolumeRenderingModel.h
+  captureVolumeRenderingModel.h
 )
 
 
@@ -32,7 +32,7 @@ SET(QTVTKCONTROLLER_MOC_HDRS
 # Put .h files that do not need moc here.
 ##########################################
 SET(QTVTKCONTROLLER_HDRS
-  mpQtVTKModelWin32ExportHeader.h
+  captureQtVTKModelWin32ExportHeader.h
 )
 
 
@@ -68,9 +68,9 @@ add_library(qtvtkmodel
 #################################
 if(BUILD_SHARED_LIBS)
   if(WIN32)
-    add_definitions(-DMYPROJECT_QTVTKMODEL_WINDOWS_EXPORT)
+    add_definitions(-DIMAGECAPTURE_QTVTKMODEL_WINDOWS_EXPORT)
   endif(WIN32)
-  MYPROJECT_INSTALL_LIBRARY(qtvtkmodel)
+  IMAGECAPTURE_INSTALL_LIBRARY(qtvtkmodel)
 endif(BUILD_SHARED_LIBS)
 
 

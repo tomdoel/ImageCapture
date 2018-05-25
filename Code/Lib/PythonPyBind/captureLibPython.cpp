@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -13,9 +13,9 @@
 =============================================================================*/
 
 #include <pybind11/pybind11.h>
-#include "mpMyFunctions.h"
+#include "captureMyFunctions.h"
 
-PYBIND11_MODULE(myprojectpython, m) {
-    m.doc() = "pybind11 example wrapping mp::MyFirstAddFunction";
-    m.def("my_first_add_function", &mp::MyFirstAddFunction, "A function which adds two numbers");
+PYBIND11_MODULE(imagecapturepython, m) {
+    m.doc() = "pybind11 example wrapping capture::MyFirstAddFunction";
+    m.def("my_first_add_function", &capture::MyFirstAddFunction, "A function which adds two numbers");
 }

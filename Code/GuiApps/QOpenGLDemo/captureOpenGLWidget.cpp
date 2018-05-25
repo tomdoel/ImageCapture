@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,11 +12,11 @@
 
 =============================================================================*/
 
-#include "mpOpenGLWidget.h"
+#include "captureOpenGLWidget.h"
 #include <QCoreApplication>
 #include <QDebug>
 
-namespace mp
+namespace capture
 {
 
 bool OpenGLWidget::m_IsTransparent = false;

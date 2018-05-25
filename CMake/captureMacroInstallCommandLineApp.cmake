@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,16 +12,16 @@
 #
 #============================================================================*/
 
-macro(MYPROJECT_INSTALL_CL)
+macro(IMAGECAPTURE_INSTALL_CL)
 
   set(ARGS ${ARGN})
   list(FIND ARGS DESTINATION _destination_index)
   if(_destination_index GREATER -1)
-    message(SEND_ERROR "MYPROJECT_INSTALL_CL macro must not be called with a DESTINATION parameter.")
+    message(SEND_ERROR "IMAGECAPTURE_INSTALL_CL macro must not be called with a DESTINATION parameter.")
   else()
 
     set(_app_installed FALSE)
-    get_property(_apps GLOBAL PROPERTY MYPROJECT_GUI_APPS)
+    get_property(_apps GLOBAL PROPERTY IMAGECAPTURE_GUI_APPS)
     if(APPLE)
       foreach(app ${_apps})
         install(${ARGS} DESTINATION ${app}.app/Contents/MacOS/)
@@ -29,7 +29,7 @@ macro(MYPROJECT_INSTALL_CL)
       endforeach()
     endif()
     if(NOT _app_installed)
-      install(${ARGS} DESTINATION ${MYPROJECT_INSTALL_BIN_DIR})
+      install(${ARGS} DESTINATION ${IMAGECAPTURE_INSTALL_BIN_DIR})
     endif()
 
   endif()

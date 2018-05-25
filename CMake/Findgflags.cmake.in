@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -30,7 +30,7 @@ if(NOT BUILD_SHARED_LIBS AND WIN32)
   set(_libname ${_libname}_static)
 endif()
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-  set(_libname ${_libname}${MYPROJECT_SUPERBUILD_DEBUG_POSTFIX})
+  set(_libname ${_libname}${IMAGECAPTURE_SUPERBUILD_DEBUG_POSTFIX})
 endif()
 
 if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
@@ -55,6 +55,6 @@ if(gflags_LIBRARY AND gflags_INC)
   set(gflags_INCLUDE_DIR ${_inc_dir})
 endif()
 
-message( "MYPROJECT Findgflags.cmake: gflags_INCLUDE_DIR: ${gflags_INCLUDE_DIR}" )
-message( "MYPROJECT Findgflags.cmake: gflags_LIBRARY_DIR: ${gflags_LIBRARY_DIR}" )
-message( "MYPROJECT Findgflags.cmake: gflags_LIBRARY:     ${gflags_LIBRARY}" )
+message( "IMAGECAPTURE Findgflags.cmake: gflags_INCLUDE_DIR: ${gflags_INCLUDE_DIR}" )
+message( "IMAGECAPTURE Findgflags.cmake: gflags_LIBRARY_DIR: ${gflags_LIBRARY_DIR}" )
+message( "IMAGECAPTURE Findgflags.cmake: gflags_LIBRARY:     ${gflags_LIBRARY}" )

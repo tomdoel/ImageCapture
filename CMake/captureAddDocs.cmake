@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -18,4 +18,4 @@ option(BUILD_Docs "Build Docs using Doxygen." OFF)
 # When you do find_package on an external project, you should also append
 # ext1/ext1.tag=../../ext1/html i.e. name=path
 # to this variable:
-set(MYPROJECT_EXTERNAL_DOXYGEN_TAGFILES)
+set(IMAGECAPTURE_EXTERNAL_DOXYGEN_TAGFILES)

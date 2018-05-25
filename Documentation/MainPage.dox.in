@@ -1,14 +1,14 @@
 /**
 
-\mainpage The MYPROJECT (@MYPROJECT_VERSION_MAJOR@.@MYPROJECT_VERSION_MINOR@.@MYPROJECT_VERSION_PATCH@) Documentation
+\mainpage The IMAGECAPTURE (@IMAGECAPTURE_VERSION_MAJOR@.@IMAGECAPTURE_VERSION_MINOR@.@IMAGECAPTURE_VERSION_PATCH@) Documentation
 
 Copyright (C) 2017 University College London (UCL). All rights reserved.
 
-\subpage MYPROJECTLicense
+\subpage IMAGECAPTURELicense
 
 \section MainPageIntro Introduction
 
-MYPROJECT is a software library to perform whatever.
+IMAGECAPTURE is a software library to perform whatever.
 
 Further information can be obtained via
 

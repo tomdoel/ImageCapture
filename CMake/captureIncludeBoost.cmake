@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -33,7 +33,7 @@ if(BUILD_Boost OR BUILD_Python_Boost)
     set(Boost_USE_STATIC_LIBS ON)
     set(Boost_USE_STATIC_RUNTIME ON)
   endif()
-  find_package(Boost 1.64 EXACT COMPONENTS ${MYPROJECT_BOOST_LIBS} REQUIRED)
+  find_package(Boost 1.64 EXACT COMPONENTS ${IMAGECAPTURE_BOOST_LIBS} REQUIRED)
   include_directories(${Boost_INCLUDE_DIRS})
   link_directories(${Boost_LIBRARY_DIRS})
   if(WIN32)

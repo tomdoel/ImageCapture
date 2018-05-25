@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -13,6 +13,6 @@
 #============================================================================*/
 
 set(CMAKE_MODULE_PATH @CMAKE_SOURCE_DIR@/CMake ${CMAKE_MODULE_PATH})
-include(mpFunctionFixInstallNameForMac)
-mpFunctionFixInstallNameForMac(@VL_ROOT@)
+include(captureFunctionFixInstallNameForMac)
+captureFunctionFixInstallNameForMac(@VL_ROOT@)
 

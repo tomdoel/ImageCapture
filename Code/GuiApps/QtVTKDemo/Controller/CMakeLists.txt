@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -16,8 +16,8 @@
 # Put .ui files here.
 #########################
 set(QTVTKCONTROLLER_UIS
-  mpTwinSliderWidget.ui
-  mpControlPanelWidget.ui
+  captureTwinSliderWidget.ui
+  captureControlPanelWidget.ui
 )
 
 
@@ -25,8 +25,8 @@ set(QTVTKCONTROLLER_UIS
 # Put .cpp files here.
 #########################
 set(QTVTKCONTROLLER_SRCS
-  mpTwinSliderWidget.cpp
-  mpControlPanelWidget.cpp
+  captureTwinSliderWidget.cpp
+  captureControlPanelWidget.cpp
 )
 
 
@@ -34,8 +34,8 @@ set(QTVTKCONTROLLER_SRCS
 # Put .h files that need moc here.
 ###################################
 SET(QTVTKCONTROLLER_MOC_HDRS
-  mpTwinSliderWidget.h
-  mpControlPanelWidget.h
+  captureTwinSliderWidget.h
+  captureControlPanelWidget.h
 )
 
 
@@ -43,7 +43,7 @@ SET(QTVTKCONTROLLER_MOC_HDRS
 # Put .h files that do not need moc here.
 ##########################################
 SET(QTVTKCONTROLLER_HDRS
-  mpQtVTKControllerWin32ExportHeader.h
+  captureQtVTKControllerWin32ExportHeader.h
 )
 
 
@@ -80,9 +80,9 @@ add_library(qtvtkcontroller
 #################################
 if(BUILD_SHARED_LIBS)
   if(WIN32)
-    add_definitions(-DMYPROJECT_QTVTKCONTROLLER_WINDOWS_EXPORT)
+    add_definitions(-DIMAGECAPTURE_QTVTKCONTROLLER_WINDOWS_EXPORT)
   endif(WIN32)
-  MYPROJECT_INSTALL_LIBRARY(qtvtkcontroller)
+  IMAGECAPTURE_INSTALL_LIBRARY(qtvtkcontroller)
 endif(BUILD_SHARED_LIBS)
 
 

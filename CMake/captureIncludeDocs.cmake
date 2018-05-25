@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -14,13 +14,13 @@
 
 if(BUILD_Docs)
   find_package(Doxygen REQUIRED)
-  configure_file(${CMAKE_SOURCE_DIR}/Utilities/Doxygen/myprojectdoxygen.pl.in ${CMAKE_BINARY_DIR}/myprojectdoxygen.pl)
+  configure_file(${CMAKE_SOURCE_DIR}/Utilities/Doxygen/imagecapturedoxygen.pl.in ${CMAKE_BINARY_DIR}/imagecapturedoxygen.pl)
 
-  # See comment in mpAddDocs.cmake.
-  set(MYPROJECT_TAGFILES "")
-  foreach( f ${MYPROJECT_EXTERNAL_DOXYGEN_TAGFILES})
+  # See comment in captureAddDocs.cmake.
+  set(IMAGECAPTURE_TAGFILES "")
+  foreach( f ${IMAGECAPTURE_EXTERNAL_DOXYGEN_TAGFILES})
     # Converts list to space separated sting, for substitution into doxygen.config.
-    set(MYPROJECT_TAGFILES "${f} ${MYPROJECT_TAGFILES}")
+    set(IMAGECAPTURE_TAGFILES "${f} ${IMAGECAPTURE_TAGFILES}")
   endforeach()
 
   configure_file(${CMAKE_SOURCE_DIR}/Utilities/Doxygen/doxygen.config.in ${CMAKE_BINARY_DIR}/doxygen.config)

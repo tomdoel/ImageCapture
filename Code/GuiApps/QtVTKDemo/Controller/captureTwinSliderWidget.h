@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,15 +12,15 @@
 
 =============================================================================*/
 
-#ifndef mpTwinSliderWidget_h
-#define mpTwinSliderWidget_h
+#ifndef captureTwinSliderWidget_h
+#define captureTwinSliderWidget_h
 
-#include "mpQtVTKControllerWin32ExportHeader.h"
-#include "ui_mpTwinSliderWidget.h"
+#include "captureQtVTKControllerWin32ExportHeader.h"
+#include "ui_captureTwinSliderWidget.h"
 
 #include <QWidget>
 
-namespace mp
+namespace capture
 {
 
 /**
@@ -31,7 +31,7 @@ namespace mp
 * and communicate entirely via signals and slots. Ideally, it should
 * have no domain (application) specific knowledge.
 */
-class MYPROJECT_QTVTKCONTROLLERWINEXPORT TwinSliderWidget : public QWidget, Ui_TwinSliderWidget
+class IMAGECAPTURE_QTVTKCONTROLLERWINEXPORT TwinSliderWidget : public QWidget, Ui_TwinSliderWidget
 {
   Q_OBJECT
 

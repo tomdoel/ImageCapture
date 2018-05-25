@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -44,18 +44,18 @@ if(NOT DEFINED OpenCV_DIR)
   endif()
 
   set(_cuda_options
-    -DWITH_CUDA:BOOL=${MYPROJECT_USE_CUDA}
+    -DWITH_CUDA:BOOL=${IMAGECAPTURE_USE_CUDA}
   )
-  if(MYPROJECT_USE_CUDA)
+  if(IMAGECAPTURE_USE_CUDA)
     list(APPEND _cuda_options
       -DCUDA_TOOLKIT_ROOT_DIR:PATH=${CUDA_TOOLKIT_ROOT_DIR}
-      -DCUDA_ARCH_BIN:STRING=${MYPROJECT_CUDA_ARCH_BIN}
+      -DCUDA_ARCH_BIN:STRING=${IMAGECAPTURE_CUDA_ARCH_BIN}
       -DCUDA_PROPAGATE_HOST_FLAGS:BOOL=OFF
     )
     if(CMAKE_COMPILER_IS_GNUCXX)
-      list(APPEND _cuda_options -DCUDA_NVCC_FLAGS:STRING=${MYPROJECT_CXX11_FLAG}^^--expt-relaxed-constexpr)
+      list(APPEND _cuda_options -DCUDA_NVCC_FLAGS:STRING=${IMAGECAPTURE_CXX11_FLAG}^^--expt-relaxed-constexpr)
     else()
-      list(APPEND _cuda_options -DCUDA_NVCC_FLAGS:STRING=${MYPROJECT_CXX11_FLAG})
+      list(APPEND _cuda_options -DCUDA_NVCC_FLAGS:STRING=${IMAGECAPTURE_CXX11_FLAG})
     endif()
   endif()
 
@@ -76,7 +76,7 @@ if(NOT DEFINED OpenCV_DIR)
     CMAKE_GENERATOR ${gen}
     CMAKE_ARGS
       ${EP_COMMON_ARGS}
-      -DCMAKE_PREFIX_PATH:PATH=${MYPROJECT_PREFIX_PATH}
+      -DCMAKE_PREFIX_PATH:PATH=${IMAGECAPTURE_PREFIX_PATH}
       -DBUILD_opencv_core:BOOL=ON
       -DBUILD_opencv_calib3d:BOOL=ON
       -DBUILD_opencv_features2d:BOOL=ON
@@ -94,10 +94,10 @@ if(NOT DEFINED OpenCV_DIR)
       -DWITH_EIGEN:BOOL=OFF
       -DWITH_WEBP:BOOL=OFF  # On Mac, with Homebrew, this is read-only which breaks packaging.
       -DWITH_FFMPEG:BOOL=${OPENCV_WITH_FFMPEG}
-      -DWITH_OPENMP:BOOL=${MYPROJECT_USE_OPENMP}
+      -DWITH_OPENMP:BOOL=${IMAGECAPTURE_USE_OPENMP}
       ${_vtk_options}
       ${_cuda_options}
-      "-DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS} ${MYPROJECT_CXX11_FLAG} -DVTK_MAJOR_VERSION=6" # Doesn't matter what version, as long as > 5.
+      "-DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS} ${IMAGECAPTURE_CXX11_FLAG} -DVTK_MAJOR_VERSION=6" # Doesn't matter what version, as long as > 5.
       ${additional_cmake_args}
     CMAKE_CACHE_ARGS
       ${EP_COMMON_CACHE_ARGS}
@@ -107,7 +107,7 @@ if(NOT DEFINED OpenCV_DIR)
   )
 
   set(OpenCV_DIR ${proj_INSTALL})
-  set(MYPROJECT_PREFIX_PATH ${proj_INSTALL}^^${MYPROJECT_PREFIX_PATH})
+  set(IMAGECAPTURE_PREFIX_PATH ${proj_INSTALL}^^${IMAGECAPTURE_PREFIX_PATH})
   mitkFunctionInstallExternalCMakeProject(${proj})
 
   message("SuperBuild loading OpenCV from ${OpenCV_DIR}")

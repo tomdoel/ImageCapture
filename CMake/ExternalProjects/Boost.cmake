@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,8 +12,8 @@
 #
 #============================================================================*/
 
-set(MYPROJECT_USE_Boost 1)
-set(MYPROJECT_USE_Boost_LIBRARIES ${MYPROJECT_BOOST_LIBS})
+set(IMAGECAPTURE_USE_Boost 1)
+set(IMAGECAPTURE_USE_Boost_LIBRARIES ${IMAGECAPTURE_BOOST_LIBS})
 
 #-----------------------------------------------------------------------------
 # Boost
@@ -32,9 +32,9 @@ set(location "${NIFTK_EP_TARBALL_LOCATION}/boost_${version}.tar.gz")
 mpMacroDefineExternalProjectVariables(Boost ${version} ${location})
 set(proj_DEPENDENCIES )
 
-string(REPLACE "^^" ";" MYPROJECT_USE_Boost_LIBRARIES "${MYPROJECT_USE_Boost_LIBRARIES}")
+string(REPLACE "^^" ";" IMAGECAPTURE_USE_Boost_LIBRARIES "${IMAGECAPTURE_USE_Boost_LIBRARIES}")
 
-if(NOT DEFINED BOOST_ROOT AND NOT MYPROJECT_USE_SYSTEM_Boost)
+if(NOT DEFINED BOOST_ROOT AND NOT IMAGECAPTURE_USE_SYSTEM_Boost)
 
   set(_boost_version 1_64)
   set(_boost_install_include_dir include/boost)
@@ -49,9 +49,9 @@ if(NOT DEFINED BOOST_ROOT AND NOT MYPROJECT_USE_SYSTEM_Boost)
   # Set the boost root to the libraries install directory
   set(BOOST_ROOT "${proj_INSTALL}")
 
-  if(MYPROJECT_USE_Boost_LIBRARIES)
-    string(REPLACE ";" "," _boost_libs "${MYPROJECT_USE_Boost_LIBRARIES}")
-    foreach(_boost_lib ${MYPROJECT_USE_Boost_LIBRARIES})
+  if(IMAGECAPTURE_USE_Boost_LIBRARIES)
+    string(REPLACE ";" "," _boost_libs "${IMAGECAPTURE_USE_Boost_LIBRARIES}")
+    foreach(_boost_lib ${IMAGECAPTURE_USE_Boost_LIBRARIES})
       list(APPEND _with_boost_libs --with-${_boost_lib})
     endforeach()
   endif()
@@ -137,8 +137,8 @@ if(NOT DEFINED BOOST_ROOT AND NOT MYPROJECT_USE_SYSTEM_Boost)
     set(_boost_link static)
   endif()
   set(_boost_cxxflags )
-  if(CMAKE_CXX_FLAGS OR MYPROJECT_CXX11_FLAG)
-    set(_boost_cxxflags "cxxflags=${MYPROJECT_CXX11_FLAG} ${CMAKE_CXX_FLAGS}")
+  if(CMAKE_CXX_FLAGS OR IMAGECAPTURE_CXX11_FLAG)
+    set(_boost_cxxflags "cxxflags=${IMAGECAPTURE_CXX11_FLAG} ${CMAKE_CXX_FLAGS}")
   endif()
   set(_boost_linkflags )
   if(BUILD_SHARED_LIBS AND _install_rpath_linkflag)
@@ -167,7 +167,7 @@ if(NOT DEFINED BOOST_ROOT AND NOT MYPROJECT_USE_SYSTEM_Boost)
       -q
   )
 
-  if(MYPROJECT_USE_Boost_LIBRARIES)
+  if(IMAGECAPTURE_USE_Boost_LIBRARIES)
     set(_boost_build_cmd BUILD_COMMAND ${_build_cmd})
     set(_install_cmd ${_build_cmd} install ${_macos_change_install_name_cmd} ${_windows_move_libs_cmd})
   else()
@@ -197,7 +197,7 @@ if(NOT DEFINED BOOST_ROOT AND NOT MYPROJECT_USE_SYSTEM_Boost)
     DEPENDS ${proj_DEPENDENCIES}
     )
 
-  set(MYPROJECT_PREFIX_PATH ${proj_INSTALL}^^${MYPROJECT_PREFIX_PATH})
+  set(IMAGECAPTURE_PREFIX_PATH ${proj_INSTALL}^^${IMAGECAPTURE_PREFIX_PATH})
 
   ExternalProject_Get_Property(${proj} install_dir)
 
@@ -205,7 +205,7 @@ if(NOT DEFINED BOOST_ROOT AND NOT MYPROJECT_USE_SYSTEM_Boost)
     set(BOOST_LIBRARYDIR "${install_dir}/lib")
   endif()
 
-  # Manual install commands (for a MYPROJECT super-build install)
+  # Manual install commands (for a IMAGECAPTURE super-build install)
   # until the Boost CMake system is used.
 
   # We just copy the include directory
@@ -214,7 +214,7 @@ if(NOT DEFINED BOOST_ROOT AND NOT MYPROJECT_USE_SYSTEM_Boost)
           COMPONENT dev
          )
 
-  if(MYPROJECT_USE_Boost_LIBRARIES)
+  if(IMAGECAPTURE_USE_Boost_LIBRARIES)
     # Copy the boost libraries
     file(GLOB _boost_libs
          "${install_dir}/lib/libboost*.so*"

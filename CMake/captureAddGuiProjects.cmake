@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -40,12 +40,12 @@ if(BUILD_PYTHON_BINDINGS AND BUILD_QMLVLDemo)
   message("Forcing BUILD_QMLVLDemo to OFF as you want a python module.")
 endif()
 
-option(MYPROJECT_USE_QT "Use Qt." OFF)
-mark_as_advanced(MYPROJECT_USE_QT) # Qt gets baked into VTK, so really developers should not fiddle with this.
+option(IMAGECAPTURE_USE_QT "Use Qt." OFF)
+mark_as_advanced(IMAGECAPTURE_USE_QT) # Qt gets baked into VTK, so really developers should not fiddle with this.
 
-if(BUILD_QtVTKDemo AND NOT MYPROJECT_USE_QT)
-  set(MYPROJECT_USE_QT ON CACHE BOOL "Use Qt." FORCE)
-  message("Forcing MYPROJECT_USE_QT to ON due to BUILD_QtVTKDemo being ON.")
+if(BUILD_QtVTKDemo AND NOT IMAGECAPTURE_USE_QT)
+  set(IMAGECAPTURE_USE_QT ON CACHE BOOL "Use Qt." FORCE)
+  message("Forcing IMAGECAPTURE_USE_QT to ON due to BUILD_QtVTKDemo being ON.")
 endif()
 
 if(BUILD_QtVTKDemo AND NOT BUILD_VTK)
@@ -53,9 +53,9 @@ if(BUILD_QtVTKDemo AND NOT BUILD_VTK)
   message("Forcing BUILD_VTK to ON due to BUILD_QtVTKDemo being ON.")
 endif()
 
-if(BUILD_QMLDemo AND NOT MYPROJECT_USE_QT)
-  set(MYPROJECT_USE_QT ON CACHE BOOL "Use Qt." FORCE)
-  message("Forcing MYPROJECT_USE_QT to ON due to BUILD_QMLDemo being ON.")
+if(BUILD_QMLDemo AND NOT IMAGECAPTURE_USE_QT)
+  set(IMAGECAPTURE_USE_QT ON CACHE BOOL "Use Qt." FORCE)
+  message("Forcing IMAGECAPTURE_USE_QT to ON due to BUILD_QMLDemo being ON.")
 endif()
 
 if(BUILD_QMLDemo AND NOT BUILD_SHARED_LIBS)
@@ -63,9 +63,9 @@ if(BUILD_QMLDemo AND NOT BUILD_SHARED_LIBS)
   set(BUILD_SHARED_LIBS ON CACHE BOOL "Build Shared Libraries" FORCE)
 endif()
 
-if(BUILD_QMLVLDemo AND NOT MYPROJECT_USE_QT)
-  set(MYPROJECT_USE_QT ON CACHE BOOL "Use Qt." FORCE)
-  message("Forcing MYPROJECT_USE_QT to ON due to BUILD_QMLVLDemo being ON.")
+if(BUILD_QMLVLDemo AND NOT IMAGECAPTURE_USE_QT)
+  set(IMAGECAPTURE_USE_QT ON CACHE BOOL "Use Qt." FORCE)
+  message("Forcing IMAGECAPTURE_USE_QT to ON due to BUILD_QMLVLDemo being ON.")
 endif()
 
 if(BUILD_QMLVLDemo AND NOT BUILD_SHARED_LIBS)
@@ -78,9 +78,9 @@ if(BUILD_QMLVLDemo AND NOT BUILD_VL)
   set(BUILD_VL ON CACHE BOOL "Build VL" FORCE)
 endif()
 
-if(BUILD_QOpenGLDemo AND NOT MYPROJECT_USE_QT)
-  set(MYPROJECT_USE_QT ON CACHE BOOL "Use Qt." FORCE)
-  message("Forcing MYPROJECT_USE_QT to ON due to BUILD_QOpenGLDemo being ON.")
+if(BUILD_QOpenGLDemo AND NOT IMAGECAPTURE_USE_QT)
+  set(IMAGECAPTURE_USE_QT ON CACHE BOOL "Use Qt." FORCE)
+  message("Forcing IMAGECAPTURE_USE_QT to ON due to BUILD_QOpenGLDemo being ON.")
 endif()
 
 ######################################################################
@@ -104,4 +104,4 @@ if (BUILD_QMLVLDemo)
   list(APPEND _known_apps QMLVLDemo)
   set(BUILDING_GUIS ON)
 endif()
-set_property(GLOBAL PROPERTY MYPROJECT_GUI_APPS ${_known_apps})
+set_property(GLOBAL PROPERTY IMAGECAPTURE_GUI_APPS ${_known_apps})

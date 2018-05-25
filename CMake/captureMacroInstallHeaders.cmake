@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,17 +12,17 @@
 #
 #============================================================================*/
 
-macro(MYPROJECT_INSTALL_HEADERS)
+macro(IMAGECAPTURE_INSTALL_HEADERS)
 
   set(ARGS ${ARGN})
   list(FIND ARGS DESTINATION _destination_index)
   if(_destination_index GREATER -1)
-    message(SEND_ERROR "MYPROJECT_INSTALL_HEADERS macro must not be called with a DESTINATION parameter.")
+    message(SEND_ERROR "IMAGECAPTURE_INSTALL_HEADERS macro must not be called with a DESTINATION parameter.")
   else()
 
     if(NOT BUILDING_GUIS)
       file(GLOB_RECURSE HEADERS *.h)
-      install(FILES ${HEADERS} DESTINATION ${MYPROJECT_INSTALL_INC_DIR} COMPONENT HEADERS)
+      install(FILES ${HEADERS} DESTINATION ${IMAGECAPTURE_INSTALL_INC_DIR} COMPONENT HEADERS)
     endif()
 
   endif()

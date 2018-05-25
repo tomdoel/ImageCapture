@@ -73,8 +73,8 @@ class CMakeBuild(build_ext):
 
     def build_extension(self, ext):
         extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))
-        cmake_args = ['-DMYPROJECT_PYTHON_OUTPUT_DIRECTORY=' + extdir,
-                      '-DMYPROJECT_PYTHON_MODULE_NAME=' + self.distribution.get_name(),
+        cmake_args = ['-DIMAGECAPTURE_PYTHON_OUTPUT_DIRECTORY=' + extdir,
+                      '-DIMAGECAPTURE_PYTHON_MODULE_NAME=' + self.distribution.get_name(),
                       '-DPYTHON_EXECUTABLE=' + sys.executable]
 
         cfg = 'Debug' if self.debug else 'Release'
@@ -95,11 +95,11 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 
 setup(
-    name='myprojectpython', # must match python module name in your c++ code.
+    name='imagecapturepython', # must match python module name in your c++ code.
     version='0.0.1', # must match CMakeLists.txt
     author='Myself',
     author_email='me@mydomain.com',
-    description='A software package for whatever.',
+    description='A software package for capturing images from input devices and rendering to vide outputs.',
     long_description='',
     ext_modules=[CMakeExtension('CMakeCatchTemplate')], # must match top-level folder name.
     cmdclass=dict(build_ext=CMakeBuild),

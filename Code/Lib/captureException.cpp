@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,9 +12,9 @@
 
 =============================================================================*/
 
-#include "mpException.h"
+#include "captureException.h"
 
-namespace mp
+namespace capture
 {
 
 //-----------------------------------------------------------------------------

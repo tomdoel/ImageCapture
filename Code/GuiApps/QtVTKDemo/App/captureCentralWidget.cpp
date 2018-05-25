@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -11,11 +11,11 @@
   See LICENSE.txt in the top level directory for details.
 
 =============================================================================*/
-#include "mpCentralWidget.h"
+#include "captureCentralWidget.h"
 
 #include <cassert>
 
-namespace mp
+namespace capture
 {
 
 //-----------------------------------------------------------------------------

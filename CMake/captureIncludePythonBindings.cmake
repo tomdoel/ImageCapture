@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,10 +12,10 @@
 #
 #============================================================================*/
 
-# If running pip install, MYPROJECT_PYTHON_OUTPUT_DIRECTORY is passed in from setup.py
+# If running pip install, IMAGECAPTURE_PYTHON_OUTPUT_DIRECTORY is passed in from setup.py
 # So, if its not specified, we just put python library in same output folder as all other binaries.
-if(NOT MYPROJECT_PYTHON_OUTPUT_DIRECTORY OR MYPROJECT_PYTHON_OUTPUT_DIRECTORY STREQUAL "")
-  set(MYPROJECT_PYTHON_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+if(NOT IMAGECAPTURE_PYTHON_OUTPUT_DIRECTORY OR IMAGECAPTURE_PYTHON_OUTPUT_DIRECTORY STREQUAL "")
+  set(IMAGECAPTURE_PYTHON_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 endif()
 
 if(BUILD_Python_Boost OR BUILD_Python_PyBind)

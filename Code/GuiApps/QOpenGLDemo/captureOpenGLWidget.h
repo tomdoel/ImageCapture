@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,13 +12,13 @@
 
 =============================================================================*/
 
-#ifndef mpOpenGLWidget_h
-#define mpOpenGLWidget_h
+#ifndef captureOpenGLWidget_h
+#define captureOpenGLWidget_h
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
 
-namespace mp
+namespace capture
 {
 
 /**

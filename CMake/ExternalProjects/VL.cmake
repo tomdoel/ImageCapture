@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -61,10 +61,10 @@ if(NOT DEFINED VL_DIR)
     CMAKE_GENERATOR ${gen}
     CMAKE_ARGS
       ${EP_COMMON_ARGS}
-      -DCMAKE_PREFIX_PATH:PATH=${MYPROJECT_PREFIX_PATH}
+      -DCMAKE_PREFIX_PATH:PATH=${IMAGECAPTURE_PREFIX_PATH}
       -DCMAKE_INSTALL_PREFIX:PATH=${proj_INSTALL}
-      -DVL_GUI_QT5_SUPPORT:BOOL=${MYPROJECT_USE_QT}
-      -DVL_GUI_QT5_EXAMPLES:BOOL=${MYPROJECT_USE_QT}
+      -DVL_GUI_QT5_SUPPORT:BOOL=${IMAGECAPTURE_USE_QT}
+      -DVL_GUI_QT5_EXAMPLES:BOOL=${IMAGECAPTURE_USE_QT}
       -DVL_GUI_QT4_SUPPORT:BOOL=0
       -DVL_GUI_QT4_EXAMPLES:BOOL=0
       -DVL_USER_DATA_OBJECT:BOOL=1
@@ -77,7 +77,7 @@ if(NOT DEFINED VL_DIR)
   )
 
   set(VL_DIR ${proj_INSTALL})
-  set(MYPROJECT_PREFIX_PATH ${proj_CONFIG}^^${MYPROJECT_PREFIX_PATH})
+  set(IMAGECAPTURE_PREFIX_PATH ${proj_CONFIG}^^${IMAGECAPTURE_PREFIX_PATH})
   mitkFunctionInstallExternalCMakeProject(${proj})
 
   message("SuperBuild loading VL from ${VL_ROOT}")

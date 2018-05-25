@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -26,7 +26,7 @@ if("${CPACK_GENERATOR}" STREQUAL "DragNDrop")
 
 elseif("${CPACK_GENERATOR}" STREQUAL "PackageMaker")
 
-  set(CPACK_PACKAGING_INSTALL_PREFIX "/Applications/@MYPROJECT_DEPLOY_NAME@")
+  set(CPACK_PACKAGING_INSTALL_PREFIX "/Applications/@IMAGECAPTURE_DEPLOY_NAME@")
 
 elseif("${CPACK_GENERATOR}" STREQUAL "TGZ")
 
@@ -38,8 +38,8 @@ elseif("${CPACK_GENERATOR}" STREQUAL "TBZ2")
 
 elseif("${CPACK_GENERATOR}" STREQUAL "DEB")
 
-  set(CPACK_DEBIAN_PACKAGE_MAINTAINER "@MYPROJECT__CONTACT@")
-  set(CPACK_PACKAGE_DEFAULT_LOCATION "/opt/@MYPROJECT_DEPLOY_NAME@")
+  set(CPACK_DEBIAN_PACKAGE_MAINTAINER "@IMAGECAPTURE__CONTACT@")
+  set(CPACK_PACKAGE_DEFAULT_LOCATION "/opt/@IMAGECAPTURE_DEPLOY_NAME@")
 
 elseif("${CPACK_GENERATOR}" STREQUAL "NSIS")
 

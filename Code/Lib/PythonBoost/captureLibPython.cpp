@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -13,9 +13,9 @@
 =============================================================================*/
 
 #include <boost/python.hpp>
-#include "mpMyFunctions.h"
+#include "captureMyFunctions.h"
 
-BOOST_PYTHON_MODULE(myprojectpython)
+BOOST_PYTHON_MODULE(imagecapturepython)
 {
-  boost::python::def("my_first_add_function", mp::MyFirstAddFunction);
+  boost::python::def("my_first_add_function", capture::MyFirstAddFunction);
 }

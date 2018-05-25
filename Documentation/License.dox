@@ -1,7 +1,7 @@
 /**
-\page MYPROJECTLicense MYPROJECT Licenses
+\page IMAGECAPTURELicense IMAGECAPTURE Licenses
 
-\li \ref LicenseMYPROJECT
+\li \ref LicenseIMAGECAPTURE
 \li \ref LicenseEigen
 \li \ref LicenseBoost
 \li \ref LicenseOpenCV
@@ -10,7 +10,7 @@
 \li \ref Licensegflags
 \li \ref Licenseglog
 
-\section LicenseMYPROJECT The MYPROJECT License
+\section LicenseIMAGECAPTURE The IMAGECAPTURE License
 
 \include LICENSE.txt
 

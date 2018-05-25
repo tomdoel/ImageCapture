@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,8 +12,8 @@
 
 =============================================================================*/
 
-#include <mpMyFunctions.h>
-#include <mpExceptionMacro.h>
+#include <captureMyFunctions.h>
+#include <captureExceptionMacro.h>
 #include <iostream>
 
 #ifdef BUILD_gflags
@@ -37,7 +37,7 @@
 
 #ifdef BUILD_OpenCV
 #include <cv.h>
-#ifdef MYPROJECT_USE_CUDA
+#ifdef IMAGECAPTURE_USE_CUDA
 #include "opencv2/core/cuda.hpp"
 #endif
 #endif
@@ -81,15 +81,15 @@ int main(int argc, char** argv)
     cv::Matx44d matrix = cv::Matx44d::eye();
     std::cout << "Printing 4x4 matrix ..." << std::endl << matrix << std::endl;
 
-#ifdef MYPROJECT_USE_CUDA
+#ifdef IMAGECAPTURE_USE_CUDA
     int deviceCount = cv::cuda::getCudaEnabledDeviceCount();
     if (deviceCount == 0)
     {
-      mpExceptionThrow() << "No CUDA support compiled in.";
+      captureExceptionThrow() << "No CUDA support compiled in.";
     }
     if (deviceCount == -1)
     {
-      mpExceptionThrow() << "Cannot load CUDA driver, or CUDA is incompatible.";
+      captureExceptionThrow() << "Cannot load CUDA driver, or CUDA is incompatible.";
     }
     std::cout << "Number of CUDA devices:" << deviceCount << std::endl;
     cv::cuda::printCudaDeviceInfo(0); // just check first device, as its a proof-of-concept.
@@ -101,13 +101,13 @@ int main(int argc, char** argv)
     pcl::PointCloud<pcl::PointXYZ> cloud;
 #endif
 
-    std::cout << "Calculating ... " << mp::MyFirstAddFunction(1, 2) << std::endl;
+    std::cout << "Calculating ... " << capture::MyFirstAddFunction(1, 2) << std::endl;
 
     returnStatus = EXIT_SUCCESS;
   }
-  catch (mp::Exception& e)
+  catch (capture::Exception& e)
   {
-    std::cerr << "Caught mp::Exception: " << e.GetDescription() << std::endl;
+    std::cerr << "Caught capture::Exception: " << e.GetDescription() << std::endl;
   }
   catch (std::exception& e)
   {

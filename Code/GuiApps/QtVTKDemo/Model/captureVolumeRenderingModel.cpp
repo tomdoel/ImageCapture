@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -11,7 +11,7 @@
   See LICENSE.txt in the top level directory for details.
 
 =============================================================================*/
-#include "mpVolumeRenderingModel.h"
+#include "captureVolumeRenderingModel.h"
 
 #include <vtkImageData.h>
 #include <vtkImageHistogramStatistics.h>
@@ -19,7 +19,7 @@
 #include <stdexcept>
 #include <cassert>
 
-namespace mp
+namespace capture
 {
 
 //-----------------------------------------------------------------------------

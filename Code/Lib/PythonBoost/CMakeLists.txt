@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -14,18 +14,18 @@
 
 if(NOT BUILDING_GUIS)
 
-  # if running pip install, MYPROJECT_PYTHON_MODULE_NAME is passed in from setup.py
+  # if running pip install, IMAGECAPTURE_PYTHON_MODULE_NAME is passed in from setup.py
   # So, if its not specified, we just name it after the current library with a 'python' suffix.
-  if (NOT MYPROJECT_PYTHON_MODULE_NAME OR MYPROJECT_PYTHON_MODULE_NAME STREQUAL "")
-    set(MYPROJECT_PYTHON_MODULE_NAME "${MYPROJECT_LIBRARY_NAME}python")
+  if (NOT IMAGECAPTURE_PYTHON_MODULE_NAME OR IMAGECAPTURE_PYTHON_MODULE_NAME STREQUAL "")
+    set(IMAGECAPTURE_PYTHON_MODULE_NAME "${IMAGECAPTURE_LIBRARY_NAME}python")
   endif()
 
-  set(MYPROJECT_PYTHON_SRCS
-    mpLibPython.cpp
+  set(IMAGECAPTURE_PYTHON_SRCS
+    captureLibPython.cpp
   )
 
-  link_libraries(${MYPROJECT_LIBRARY_NAME})
-  PYTHON_ADD_MODULE(${MYPROJECT_PYTHON_MODULE_NAME} ${MYPROJECT_PYTHON_SRCS})
-  install(TARGETS ${MYPROJECT_PYTHON_MODULE_NAME} DESTINATION ${MYPROJECT_INSTALL_LIB_DIR})
+  link_libraries(${IMAGECAPTURE_LIBRARY_NAME})
+  PYTHON_ADD_MODULE(${IMAGECAPTURE_PYTHON_MODULE_NAME} ${IMAGECAPTURE_PYTHON_SRCS})
+  install(TARGETS ${IMAGECAPTURE_PYTHON_MODULE_NAME} DESTINATION ${IMAGECAPTURE_INSTALL_LIB_DIR})
 
 endif()

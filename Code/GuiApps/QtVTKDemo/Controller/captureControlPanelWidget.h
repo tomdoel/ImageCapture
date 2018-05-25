@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,15 +12,15 @@
 
 =============================================================================*/
 
-#ifndef mpControlPanelWidget_h
-#define mpControlPanelWidget_h
+#ifndef captureControlPanelWidget_h
+#define captureControlPanelWidget_h
 
-#include "mpQtVTKControllerWin32ExportHeader.h"
-#include "ui_mpControlPanelWidget.h"
+#include "captureQtVTKControllerWin32ExportHeader.h"
+#include "ui_captureControlPanelWidget.h"
 
 #include <QWidget>
 
-namespace mp
+namespace capture
 {
 
 /**
@@ -31,7 +31,7 @@ namespace mp
 * and communicate entirely via signals and slots and also that we can
 * combine both Qt widgets and our own widgets in the Designer.
 */
-class MYPROJECT_QTVTKCONTROLLERWINEXPORT ControlPanelWidget : public QWidget, Ui_ControlPanelWidget
+class IMAGECAPTURE_QTVTKCONTROLLERWINEXPORT ControlPanelWidget : public QWidget, Ui_ControlPanelWidget
 {
   Q_OBJECT
 

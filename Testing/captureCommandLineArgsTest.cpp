@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -13,16 +13,16 @@
 =============================================================================*/
 
 #include "catch.hpp"
-#include "mpCatchMain.h"
+#include "captureCatchMain.h"
 #include <iostream>
 
 TEST_CASE( "My first test", "[init]" ) {
 
   int expectedNumberOfArgs = 2;
-  if (mp::argc != expectedNumberOfArgs)
+  if (capture::argc != expectedNumberOfArgs)
   {
     std::cerr << "Usage: mpMyFirstCatchTest fileName.txt" << std::endl;
-    REQUIRE( mp::argc == expectedNumberOfArgs);
+    REQUIRE( capture::argc == expectedNumberOfArgs);
   }
   REQUIRE(true);
 }

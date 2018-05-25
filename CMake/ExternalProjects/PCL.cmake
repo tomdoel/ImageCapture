@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -43,14 +43,14 @@ if(NOT DEFINED PCL_DIR)
   endif()
 
   set(_cuda_options
-    -DBUILD_CUDA:BOOL=${MYPROJECT_USE_CUDA}
-    -DBUILD_GPU:BOOL=${MYPROJECT_USE_CUDA}
+    -DBUILD_CUDA:BOOL=${IMAGECAPTURE_USE_CUDA}
+    -DBUILD_GPU:BOOL=${IMAGECAPTURE_USE_CUDA}
   )
-  if(MYPROJECT_USE_CUDA)
+  if(IMAGECAPTURE_USE_CUDA)
     list(APPEND _cuda_options
       -DCUDA_TOOLKIT_ROOT_DIR:PATH=${CUDA_TOOLKIT_ROOT_DIR}
-      -DCUDA_ARCH_BIN:STRING=${MYPROJECT_CUDA_ARCH_BIN}
-      -DCUDA_NVCC_FLAGS:STRING=${MYPROJECT_CXX11_FLAG}
+      -DCUDA_ARCH_BIN:STRING=${IMAGECAPTURE_CUDA_ARCH_BIN}
+      -DCUDA_NVCC_FLAGS:STRING=${IMAGECAPTURE_CXX11_FLAG}
       -DCUDA_PROPAGATE_HOST_FLAGS:BOOL=OFF
       -DBUILD_gpu_tracking:BOOL=ON
       -DBUILD_gpu_utils:BOOL=ON
@@ -79,7 +79,7 @@ if(NOT DEFINED PCL_DIR)
     CMAKE_GENERATOR ${gen}
     CMAKE_ARGS
       ${EP_COMMON_ARGS}
-      -DCMAKE_PREFIX_PATH:PATH=${MYPROJECT_PREFIX_PATH}
+      -DCMAKE_PREFIX_PATH:PATH=${IMAGECAPTURE_PREFIX_PATH}
       -DCMAKE_DEBUG_POSTFIX:STRING=
       -DBOOST_ROOT:PATH=${BOOST_ROOT}
       -DBOOST_INCLUDEDIR:PATH=${BOOST_ROOT}/include
@@ -115,7 +115,7 @@ if(NOT DEFINED PCL_DIR)
 
   set(PCL_DIR ${proj_INSTALL})
 
-  set(MYPROJECT_PREFIX_PATH ${proj_INSTALL}^^${MYPROJECT_PREFIX_PATH})
+  set(IMAGECAPTURE_PREFIX_PATH ${proj_INSTALL}^^${IMAGECAPTURE_PREFIX_PATH})
   mitkFunctionInstallExternalCMakeProject(${proj})
 
   message("SuperBuild loading PCL from ${PCL_DIR}")

@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,10 +12,10 @@
 
 =============================================================================*/
 
-#ifndef mpVTKViewWidget_h
-#define mpVTKViewWidget_h
+#ifndef captureVTKViewWidget_h
+#define captureVTKViewWidget_h
 
-#include "mpQtVTKViewWin32ExportHeader.h"
+#include "captureQtVTKViewWin32ExportHeader.h"
 #include <vtkSmartPointer.h>
 #include <vtkRenderer.h>
 
@@ -25,7 +25,7 @@
 #include <QVTKOpenGLWidget.h>
 #endif
 
-namespace mp
+namespace capture
 {
 
 /**
@@ -62,7 +62,7 @@ namespace mp
 * Also, if you look in the header file for QVTKOpenGLWidget in the VTK source code, you will seed
 * more instructions for use. These have been implemented in our main.cpp.
 */
-class MYPROJECT_QTVTKVIEWWINEXPORT VTKViewWidget
+class IMAGECAPTURE_QTVTKVIEWWINEXPORT VTKViewWidget
 #ifdef BUILD_VTK_OpenGL
     : public QVTKWidget2
 #else

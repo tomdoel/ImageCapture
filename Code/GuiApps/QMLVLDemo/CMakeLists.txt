@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -18,18 +18,18 @@ set(APP_UIS
 )
 
 set(APP_SRCS
-  App/mpQMLVLOpenGLContext.cpp
-  App/mpTriangleModel.cpp
-  App/mpVLTriangleRenderer.cpp
+  App/captureQMLVLOpenGLContext.cpp
+  App/captureTriangleModel.cpp
+  App/captureVLTriangleRenderer.cpp
 )
 
 set(APP_MOC_HDRS
-  App/mpTriangleModel.h
-  App/mpVLTriangleRenderer.h
+  App/captureTriangleModel.h
+  App/captureVLTriangleRenderer.h
 )
 
 set(APP_HDRS
-  App/mpQMLVLOpenGLContext.h
+  App/captureQMLVLOpenGLContext.h
 )
 
 set(APP_RES
@@ -78,4 +78,4 @@ set(APP_LIBS)
 target_link_libraries(${APP_NAME} ${APP_LIBS} ${ALL_THIRD_PARTY_LIBRARIES} ${QT5_LINK_LIBRARIES})
 
 # This sorts out the fixup_bundle.
-mpMacroCreateGuiApplication(${APP_NAME} "${ADDITIONAL_SEARCH_PATHS}")
+captureMacroCreateGuiApplication(${APP_NAME} "${ADDITIONAL_SEARCH_PATHS}")

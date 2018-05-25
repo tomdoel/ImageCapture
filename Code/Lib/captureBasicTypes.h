@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,10 +12,10 @@
 
 =============================================================================*/
 
-#ifndef mpBasicTypes_h
-#define mpBasicTypes_h
+#ifndef captureBasicTypes_h
+#define captureBasicTypes_h
 
-#include "mpWin32ExportHeader.h"
+#include "captureWin32ExportHeader.h"
 
 /**
 * \defgroup internal internal
@@ -38,13 +38,13 @@
 */
 
 /**
-* \file mpBasicTypes.h
+* \file captureBasicTypes.h
 * \brief Defines types and typedefs used in this library.
 * \ingroup types
 */
 
 //! Single namespace for all code in this package
-namespace mp
+namespace capture
 {
 
 } // end namespace

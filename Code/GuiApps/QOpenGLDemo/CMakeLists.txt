@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -21,16 +21,16 @@ set(APP_UIS
 )
 
 set(APP_SRCS
-  mpOpenGLWidget.cpp
-  mpOpenGLMainWindow.cpp
+  captureOpenGLWidget.cpp
+  captureOpenGLMainWindow.cpp
 )
 
 set(APP_MOC_HDRS
-  mpOpenGLWidget.h
+  captureOpenGLWidget.h
 )
 
 set(APP_HDRS
-  mpOpenGLMainWindow.h
+  captureOpenGLMainWindow.h
 )
 
 set(APP_RES
@@ -57,5 +57,5 @@ set(APP_LIBS
 )
 
 target_link_libraries(${APP_NAME} ${APP_LIBS} ${ALL_THIRD_PARTY_LIBRARIES} ${QT5_LINK_LIBRARIES})
-mpMacroCreateGuiApplication(${APP_NAME} "${ADDITIONAL_SEARCH_PATHS}")
+captureMacroCreateGuiApplication(${APP_NAME} "${ADDITIONAL_SEARCH_PATHS}")
 

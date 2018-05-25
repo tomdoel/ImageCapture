@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,12 +12,12 @@
 
 =============================================================================*/
 
-#ifndef mpQMLVLOpenGLContext_h
-#define mpQMLVLOpenGLContext_h
+#ifndef captureQMLVLOpenGLContext_h
+#define captureQMLVLOpenGLContext_h
 
 #include <vlGraphics/OpenGLContext.hpp>
 
-namespace mp
+namespace capture
 {
 
 class QMLVLOpenGLContext : public vl::OpenGLContext {

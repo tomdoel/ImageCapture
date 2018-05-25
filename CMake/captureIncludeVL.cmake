@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -17,7 +17,7 @@ if(BUILD_VL)
   include_directories(${OPENGL_INCLUDE_DIR})
   message("Found OpenGL:${OPENGL_INCLUDE_DIR}")
   set(_vl_components VLMain VLCore VLGraphics VLVolume)
-  if(MYPROJECT_USE_QT)
+  if(IMAGECAPTURE_USE_QT)
     list(APPEND _vl_components VLQt5)
   endif()
   list(APPEND CMAKE_MODULE_PATH ${VL_ROOT}/cmake)

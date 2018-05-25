@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,11 +12,11 @@
 
 =============================================================================*/
 
-#ifndef mpExceptionMacro_h
-#define mpExceptionMacro_h
+#ifndef captureExceptionMacro_h
+#define captureExceptionMacro_h
 
-#include "mpException.h"
+#include "captureException.h"
 
-#define mpExceptionThrow() throw mp::Exception(__FILE__,__LINE__)
+#define captureExceptionThrow() throw capture::Exception(__FILE__,__LINE__)
 
 #endif

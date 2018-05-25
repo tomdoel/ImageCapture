@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,16 +12,16 @@
 
 =============================================================================*/
 
-#include "mpVLTriangleRenderer.h"
+#include "captureVLTriangleRenderer.h"
 
 #include <vlGraphics/Rendering.hpp>
 #include <vlGraphics/SceneManagerActorTree.hpp>
 #include <vlCore/Colors.hpp>
-#include "mpQMLVLOpenGLContext.h"
+#include "captureQMLVLOpenGLContext.h"
 
 #include <QOpenGLContext>
 
-namespace mp
+namespace capture
 {
 
 static const char *vertexShaderSource =
@@ -70,7 +70,7 @@ VLTriangleRenderer::VLTriangleRenderer()
   m_SceneManager = new vl::SceneManagerActorTree;
   m_Rendering->sceneManagers()->push_back(m_SceneManager.get());
 
-  m_OpenGLContext = new mp::QMLVLOpenGLContext();
+  m_OpenGLContext = new capture::QMLVLOpenGLContext();
 }
 
 

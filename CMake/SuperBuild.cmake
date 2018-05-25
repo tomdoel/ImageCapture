@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -46,12 +46,12 @@ set(EP_BASE "${CMAKE_BINARY_DIR}" CACHE PATH "Directory where the external proje
 set_property(DIRECTORY PROPERTY EP_BASE ${EP_BASE})
 
 # This option makes different versions of the same external project build in separate directories.
-# This allows switching branches in the MYPROJECT source code and build MYPROJECT quickly, even if the
+# This allows switching branches in the IMAGECAPTURE source code and build IMAGECAPTURE quickly, even if the
 # branches use different versions of the same library. A given version of an EP will be built only
 # once. A drawback is that the EP_BASE directory can become big easily.
 # Note:
 # If you switch branches that need different versions of EPs, you might need to delete the
-# MYPROJECT-configure timestamp manually before doing a superbuild. Without that the CMake cache is
+# IMAGECAPTURE-configure timestamp manually before doing a superbuild. Without that the CMake cache is
 # not regenerated and it may still store the paths to the EP versions that belong to the original
 # branch (from which you switched). You have been warned.
 
@@ -121,7 +121,7 @@ set(EP_COMMON_ARGS
   -DCMAKE_C_COMPILER:FILEPATH=${CMAKE_C_COMPILER}
   -DCMAKE_CXX_COMPILER:FILEPATH=${CMAKE_CXX_COMPILER}
   -DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}
-  "-DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS} ${MYPROJECT_CXX11_FLAG}"
+  "-DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS} ${IMAGECAPTURE_CXX11_FLAG}"
   #debug flags
   -DCMAKE_CXX_FLAGS_DEBUG:STRING=${CMAKE_CXX_FLAGS_DEBUG}
   -DCMAKE_C_FLAGS_DEBUG:STRING=${CMAKE_C_FLAGS_DEBUG}
@@ -137,7 +137,7 @@ set(EP_COMMON_ARGS
   -DCMAKE_MODULE_LINKER_FLAGS:STRING=${CMAKE_MODULE_LINKER_FLAGS}
 )
 
-set(MYPROJECT_SUPERBUILD_DEBUG_POSTFIX d)
+set(IMAGECAPTURE_SUPERBUILD_DEBUG_POSTFIX d)
 list(APPEND EP_COMMON_ARGS -DCMAKE_DEBUG_POSTFIX:STRING=d)
 
 set(EP_COMMON_CACHE_DEFAULT_ARGS
@@ -159,7 +159,7 @@ endif()
 ######################################################################
 # Include External Project helper macros
 ######################################################################
-include(mpExternalProjectHelperMacros)
+include(captureExternalProjectHelperMacros)
 
 
 ######################################################################
@@ -171,9 +171,9 @@ endforeach()
 
 
 ######################################################################
-# Now compile MYPROJECT, using the packages we just provided.
+# Now compile IMAGECAPTURE, using the packages we just provided.
 ######################################################################
-if(NOT DEFINED SUPERBUILD_EXCLUDE_MYPROJECTBUILD_TARGET OR NOT SUPERBUILD_EXCLUDE_MYPROJECTBUILD_TARGET)
+if(NOT DEFINED SUPERBUILD_EXCLUDE_IMAGECAPTUREBUILD_TARGET OR NOT SUPERBUILD_EXCLUDE_IMAGECAPTUREBUILD_TARGET)
 
   set(_install_rpath)
   if(APPLE)
@@ -183,7 +183,7 @@ if(NOT DEFINED SUPERBUILD_EXCLUDE_MYPROJECTBUILD_TARGET OR NOT SUPERBUILD_EXCLUD
     set(_install_rpath "\$ORIGIN")
   endif()
 
-  set(proj MYPROJECT)
+  set(proj IMAGECAPTURE)
   set(proj_DEPENDENCIES ${OpenCV_DEPENDS} ${Eigen_DEPENDS} ${Boost_DEPENDS} ${gflags_DEPENDS} ${glog_DEPENDS} ${VTK_DEPENDS} ${FLANN_DEPENDS} ${PCL_DEPENDS} ${VL_DEPENDS})
 
   ExternalProject_Add(${proj}
@@ -197,26 +197,26 @@ if(NOT DEFINED SUPERBUILD_EXCLUDE_MYPROJECTBUILD_TARGET OR NOT SUPERBUILD_EXCLUD
     CMAKE_ARGS
       ${EP_COMMON_ARGS}
       -DCMAKE_DEBUG_POSTFIX:STRING=
-      -DCMAKE_PREFIX_PATH:PATH=${MYPROJECT_PREFIX_PATH}
-      -DMYPROJECT_SUPERBUILD_DEBUG_POSTFIX:STRING=${MYPROJECT_SUPERBUILD_DEBUG_POSTFIX}
+      -DCMAKE_PREFIX_PATH:PATH=${IMAGECAPTURE_PREFIX_PATH}
+      -DIMAGECAPTURE_SUPERBUILD_DEBUG_POSTFIX:STRING=${IMAGECAPTURE_SUPERBUILD_DEBUG_POSTFIX}
     CMAKE_CACHE_ARGS
       ${EP_COMMON_CACHE_ARGS}
       -DCMAKE_LIBRARY_PATH:PATH=${CMAKE_LIBRARY_PATH}
       -DCMAKE_INCLUDE_PATH:PATH=${CMAKE_INCLUDE_PATH}
-      -DMYPROJECT_EXTERNAL_PROJECT_PREFIX:PATH=${ep_prefix}
-      -DMYPROJECT_USE_KWSTYLE:BOOL=${MYPROJECT_USE_KWSTYLE}
-      -DMYPROJECT_USE_CPPCHECK:BOOL=${MYPROJECT_USE_CPPCHECK}
-      -DMYPROJECT_USE_QT:BOOL=${MYPROJECT_USE_QT}
-      -DMYPROJECT_USE_OPENMP:BOOL=${MYPROJECT_USE_OPENMP}
-      -DMYPROJECT_USE_CUDA:BOOL=${MYPROJECT_USE_CUDA}
-      -DMYPROJECT_DELAYLOAD_CUDA:BOOL=${MYPROJECT_DELAYLOAD_CUDA}
-      -DMYPROJECT_CUDA_ARCH_BIN:STRING=${MYPROJECT_CUDA_ARCH_BIN}
+      -DIMAGECAPTURE_EXTERNAL_PROJECT_PREFIX:PATH=${ep_prefix}
+      -DIMAGECAPTURE_USE_KWSTYLE:BOOL=${IMAGECAPTURE_USE_KWSTYLE}
+      -DIMAGECAPTURE_USE_CPPCHECK:BOOL=${IMAGECAPTURE_USE_CPPCHECK}
+      -DIMAGECAPTURE_USE_QT:BOOL=${IMAGECAPTURE_USE_QT}
+      -DIMAGECAPTURE_USE_OPENMP:BOOL=${IMAGECAPTURE_USE_OPENMP}
+      -DIMAGECAPTURE_USE_CUDA:BOOL=${IMAGECAPTURE_USE_CUDA}
+      -DIMAGECAPTURE_DELAYLOAD_CUDA:BOOL=${IMAGECAPTURE_DELAYLOAD_CUDA}
+      -DIMAGECAPTURE_CUDA_ARCH_BIN:STRING=${IMAGECAPTURE_CUDA_ARCH_BIN}
       -DCUDA_TOOLKIT_ROOT_DIR:PATH=${CUDA_TOOLKIT_ROOT_DIR}
-      -DMYPROJECT_USE_MPI:BOOL=${MYPROJECT_USE_MPI}
+      -DIMAGECAPTURE_USE_MPI:BOOL=${IMAGECAPTURE_USE_MPI}
       -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
       "-DCMAKE_INSTALL_RPATH:STRING=${_install_rpath}"
       -DCMAKE_VERBOSE_MAKEFILE:BOOL=${CMAKE_VERBOSE_MAKEFILE}
-      -DBUILD_TESTING:BOOL=${BUILD_TESTING} # The value set in EP_COMMON_ARGS normally forces this off, but we may need MYPROJECT to be on.
+      -DBUILD_TESTING:BOOL=${BUILD_TESTING} # The value set in EP_COMMON_ARGS normally forces this off, but we may need IMAGECAPTURE to be on.
       -DBUILD_SUPERBUILD:BOOL=OFF           # Must force this to be off, or else you will loop forever.
       -DWITHIN_SUBBUILD:BOOL=ON
       -DBUILD_QtVTKDemo:BOOL=${BUILD_QtVTKDemo}
@@ -235,10 +235,10 @@ if(NOT DEFINED SUPERBUILD_EXCLUDE_MYPROJECTBUILD_TARGET OR NOT SUPERBUILD_EXCLUD
       -DBUILD_Docs:BOOL=${BUILD_Docs}
       -DBUILD_Python_Boost:BOOL=${BUILD_Python_Boost}
       -DBUILD_Python_PyBind:BOOL=${BUILD_Python_PyBind}
-      -DMYPROJECT_PYTHON_OUTPUT_DIRECTORY:PATH=${MYPROJECT_PYTHON_OUTPUT_DIRECTORY}
-      -DMYPROJECT_PYTHON_MODULE_NAME:STRING=${MYPROJECT_PYTHON_MODULE_NAME}
+      -DIMAGECAPTURE_PYTHON_OUTPUT_DIRECTORY:PATH=${IMAGECAPTURE_PYTHON_OUTPUT_DIRECTORY}
+      -DIMAGECAPTURE_PYTHON_MODULE_NAME:STRING=${IMAGECAPTURE_PYTHON_MODULE_NAME}
       -DBUILD_UNITY_WRAPPER:BOOL=${BUILD_UNITY_WRAPPER}
-      -DMYPROJECT_UNITY_PLUGIN_DIR:PATH=${MYPROJECT_UNITY_PLUGIN_DIR}
+      -DIMAGECAPTURE_UNITY_PLUGIN_DIR:PATH=${IMAGECAPTURE_UNITY_PLUGIN_DIR}
       -Dgflags_DIRECTORY:PATH=${gflags_DIR}
       -Dglog_DIRECTORY:PATH=${glog_DIR}
       -DBOOST_ROOT:PATH=${BOOST_ROOT}

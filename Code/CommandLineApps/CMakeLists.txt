@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -13,11 +13,11 @@
 #============================================================================*/
 
 set(_command_line_apps
-  mpMyFirstApp
+  captureMyFirstApp
 )
 
 foreach(_app ${_command_line_apps})
   add_executable(${_app} ${_app}.cpp)
-  target_link_libraries(${_app} ${MYPROJECT_LIBRARIES} ${ALL_THIRD_PARTY_LIBRARIES})
-  MYPROJECT_INSTALL_CL(TARGETS ${_app})
+  target_link_libraries(${_app} ${IMAGECAPTURE_LIBRARIES} ${ALL_THIRD_PARTY_LIBRARIES})
+  IMAGECAPTURE_INSTALL_CL(TARGETS ${_app})
 endforeach()

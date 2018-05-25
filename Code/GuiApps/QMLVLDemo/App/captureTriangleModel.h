@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,14 +12,14 @@
 
 =============================================================================*/
 
-#ifndef mpTriangleModel_h
-#define mpTriangleModel_h
+#ifndef captureTriangleModel_h
+#define captureTriangleModel_h
 
 #include <QtQuick/QQuickItem>
 #include <QVector>
-#include "mpVLTriangleRenderer.h"
+#include "captureVLTriangleRenderer.h"
 
-namespace mp
+namespace capture
 {
 
 /**

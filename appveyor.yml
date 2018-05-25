@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -56,6 +56,6 @@ build_script:
 
 test_script:
   - pwd
-  - cd MYPROJECT-build
+  - cd IMAGECAPTURE-build
   - pwd
   - ctest -C %CONFIGURATION%

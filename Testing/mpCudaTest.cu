@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -13,7 +13,7 @@
 =============================================================================*/
 
 #include "catch.hpp"
-#include "mpCatchMain.h"
+#include "captureCatchMain.h"
 #include <iostream>
 #include <thrust/version.h>
 #include <thrust/host_vector.h>

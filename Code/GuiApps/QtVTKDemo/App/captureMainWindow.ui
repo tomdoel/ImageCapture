@@ -22,7 +22,7 @@
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
   </property>
-  <widget class="mp::CentralWidget" name="m_CentralWidget">
+  <widget class="capture::CentralWidget" name="m_CentralWidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
      <horstretch>0</horstretch>
@@ -59,9 +59,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>mp::CentralWidget</class>
+   <class>capture::CentralWidget</class>
    <extends>QWidget</extends>
-   <header location="global">mpCentralWidget.h</header>
+   <header location="global">captureCentralWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

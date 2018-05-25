@@ -14,13 +14,13 @@
 # The PROJECT_NAME tag is a single word (or a sequence of words surrounded
 # by quotes) that should identify the project.
 
-PROJECT_NAME          = MYPROJECT
+PROJECT_NAME          = IMAGECAPTURE
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number.
 # This could be handy for archiving the generated documentation or
 # if some version control system is used.
 
-PROJECT_NUMBER        = "@MYPROJECT_VERSION_MAJOR@.@MYPROJECT_VERSION_MINOR@.@MYPROJECT_VERSION_PATCH@"
+PROJECT_NUMBER        = "@IMAGECAPTURE_VERSION_MAJOR@.@IMAGECAPTURE_VERSION_MINOR@.@IMAGECAPTURE_VERSION_PATCH@"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -252,7 +252,7 @@ WARN_FORMAT           = "$file:$line: $text"
 
 # The INPUT tag can be used to specify the files and/or directories that
 # contain documented source files. You may enter file names like "myfile.cpp"
-# or directories like "/usr/src/myproject". Separate the files or directories
+# or directories like "/usr/src/imagecapture". Separate the files or directories
 # with spaces.
 
 INPUT    = @CMAKE_SOURCE_DIR@/Documentation @CMAKE_SOURCE_DIR@/Code @CMAKE_BINARY_DIR@/Doxygen
@@ -539,12 +539,12 @@ EXPAND_ONLY_PREDEF    = YES
 
 # The TAGFILES tag can be used to specify one or more tagfiles.
 
-TAGFILES              = @MYPROJECT_TAGFILES@
+TAGFILES              = @IMAGECAPTURE_TAGFILES@
 
 # When a file name is specified after GENERATE_TAGFILE, doxygen will create
 # a tag file that is based on the input files it reads.
 
-GENERATE_TAGFILE      = Doxygen/MyProject.tag
+GENERATE_TAGFILE      = Doxygen/ImageCapture.tag
 
 # If the ALLEXTERNALS tag is set to YES all external classes will be listed
 # in the class index. If set to NO only the inherited external classes

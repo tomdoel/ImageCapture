@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,7 +12,7 @@
 #
 #============================================================================*/
 
-if(MYPROJECT_USE_MPI)
+if(IMAGECAPTURE_USE_MPI)
   find_package(MPI REQUIRED)
   message("Found MPI, with mpiexec=${MPIEXEC}")
 

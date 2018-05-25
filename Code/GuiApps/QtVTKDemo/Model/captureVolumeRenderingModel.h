@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,10 +12,10 @@
 
 =============================================================================*/
 
-#ifndef mpVolumeRenderingModel_h
-#define mpVolumeRenderingModel_h
+#ifndef captureVolumeRenderingModel_h
+#define captureVolumeRenderingModel_h
 
-#include "mpQtVTKModelWin32ExportHeader.h"
+#include "captureQtVTKModelWin32ExportHeader.h"
 
 #include <vtkSmartPointer.h>
 #include <vtkRenderer.h>
@@ -27,7 +27,7 @@
 #include <vtkVolume.h>
 #include <QObject>
 
-namespace mp
+namespace capture
 {
 
 /**
@@ -44,7 +44,7 @@ namespace mp
 * I have kept it all in the model. The View layer therefore just renders
 * the actors, so should remain quite thin.
 */
-  class MYPROJECT_QTVTKMODELWINEXPORT VolumeRenderingModel : public QObject
+  class IMAGECAPTURE_QTVTKMODELWINEXPORT VolumeRenderingModel : public QObject
 {
   Q_OBJECT
 

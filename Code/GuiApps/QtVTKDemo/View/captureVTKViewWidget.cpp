@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -11,8 +11,8 @@
   See LICENSE.txt in the top level directory for details.
 
 =============================================================================*/
-#include "mpVTKViewWidget.h"
-#include <mpExceptionMacro.h>
+#include "captureVTKViewWidget.h"
+#include <captureExceptionMacro.h>
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include <vtkGenericOpenGLRenderWindow.h>
@@ -20,7 +20,7 @@
 #include <cassert>
 #include <vtkNew.h>
 
-namespace mp
+namespace capture
 {
 
 //-----------------------------------------------------------------------------
@@ -51,7 +51,7 @@ void VTKViewWidget::AddRenderer(vtkRenderer* r)
 {
   if (r == nullptr)
   {
-    mpExceptionThrow() << "Renderer is NULL";
+    captureExceptionThrow() << "Renderer is NULL";
   }
 
   this->GetRenderWindow()->AddRenderer(r);

@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -14,10 +14,10 @@
 
 #define CATCH_CONFIG_RUNNER  // This tells Catch we provide main.
 #include "catch.hpp"
-#include "mpCatchMain.h"
+#include "captureCatchMain.h"
 
 // Global! Only do this in a private test harness.
-namespace mp
+namespace capture
 {
 int argc;
 char** argv;
@@ -25,8 +25,8 @@ char** argv;
 
 int main (int argc, char * const argv[])
 {
-  mp::argc = argc;
-  mp::argv = const_cast<char**>(argv);
+  capture::argc = argc;
+  capture::argv = const_cast<char**>(argv);
 
   Catch::Session session; // There must be exactly once instance
 

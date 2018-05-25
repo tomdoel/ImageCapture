@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -20,8 +20,8 @@ if(BUILD_UNITY_WRAPPER AND BUILD_SHARED_LIBS)
 endif()
 
 if(BUILD_UNITY_WRAPPER)
-  set(MYPROJECT_UNITY_PLUGIN_DIR "" CACHE PATH "Path to Unity project Assets dir")
-  if( "${MYPROJECT_UNITY_PLUGIN_DIR}" STREQUAL "")
-    message(FATAL_ERROR "If you turn BUILD_UNITY_WRAPPER, you must specify MYPROJECT_UNITY_PLUGIN_DIR.")
+  set(IMAGECAPTURE_UNITY_PLUGIN_DIR "" CACHE PATH "Path to Unity project Assets dir")
+  if( "${IMAGECAPTURE_UNITY_PLUGIN_DIR}" STREQUAL "")
+    message(FATAL_ERROR "If you turn BUILD_UNITY_WRAPPER, you must specify IMAGECAPTURE_UNITY_PLUGIN_DIR.")
   endif()
 endif()

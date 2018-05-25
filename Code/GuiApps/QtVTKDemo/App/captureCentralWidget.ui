@@ -15,7 +15,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <widget class="mp::VTKViewWidget" name="m_VTKView" native="true">
+    <widget class="capture::VTKViewWidget" name="m_VTKView" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>
@@ -27,7 +27,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="mp::ControlPanelWidget" name="m_RightHandControlPanel" native="true">
+      <widget class="capture::ControlPanelWidget" name="m_RightHandControlPanel" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -61,15 +61,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>mp::VTKViewWidget</class>
+   <class>capture::VTKViewWidget</class>
    <extends>QWidget</extends>
-   <header location="global">mpVTKViewWidget.h</header>
+   <header location="global">captureVTKViewWidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>mp::ControlPanelWidget</class>
+   <class>capture::ControlPanelWidget</class>
    <extends>QWidget</extends>
-   <header location="global">mpControlPanelWidget.h</header>
+   <header location="global">captureControlPanelWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

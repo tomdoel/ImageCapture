@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -40,13 +40,13 @@ if(BUILD_Python_Boost OR BUILD_Python_PyBind)
   endif()
 
   if(BUILD_Python_Boost)
-    list(APPEND MYPROJECT_BOOST_LIBS "system")
+    list(APPEND IMAGECAPTURE_BOOST_LIBS "system")
     if (${PYTHON_VERSION_MAJOR} EQUAL 3 AND WITHIN_SUBBUILD)
-      list(APPEND MYPROJECT_BOOST_LIBS "python3")
+      list(APPEND IMAGECAPTURE_BOOST_LIBS "python3")
     else()
-      list(APPEND MYPROJECT_BOOST_LIBS "python")
+      list(APPEND IMAGECAPTURE_BOOST_LIBS "python")
     endif()
-    list(REMOVE_DUPLICATES MYPROJECT_BOOST_LIBS)
+    list(REMOVE_DUPLICATES IMAGECAPTURE_BOOST_LIBS)
   endif()
 
 endif()

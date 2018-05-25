@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -42,12 +42,12 @@ if(NOT DEFINED FLANN_DIR)
     CMAKE_GENERATOR ${gen}
     CMAKE_ARGS
       ${EP_COMMON_ARGS}
-      -DCMAKE_PREFIX_PATH:PATH=${MYPROJECT_PREFIX_PATH}
-      -DUSE_OPENMP:BOOL=${MYPROJECT_USE_OPENMP}
-      -DBUILD_CUDA_LIB:BOOL=${MYPROJECT_USE_CUDA}
+      -DCMAKE_PREFIX_PATH:PATH=${IMAGECAPTURE_PREFIX_PATH}
+      -DUSE_OPENMP:BOOL=${IMAGECAPTURE_USE_OPENMP}
+      -DBUILD_CUDA_LIB:BOOL=${IMAGECAPTURE_USE_CUDA}
       -DCUDA_TOOLKIT_ROOT_DIR:PATH=${CUDA_TOOLKIT_ROOT_DIR}
-      -DCUDA_ARCH_BIN:STRING=${MYPROJECT_CUDA_ARCH_BIN}
-      #-DUSE_MPI:BOOL=${MYPROJECT_USE_MPI} Turning off for now, as you need a parallel version of HDF5.
+      -DCUDA_ARCH_BIN:STRING=${IMAGECAPTURE_CUDA_ARCH_BIN}
+      #-DUSE_MPI:BOOL=${IMAGECAPTURE_USE_MPI} Turning off for now, as you need a parallel version of HDF5.
       -DBUILD_MATLAB_BINDINGS:BOOL=OFF
       -DBUILD_PYTHON_BINDINGS:BOOL=OFF
       -DBUILD_TESTS:BOOL=OFF
@@ -62,7 +62,7 @@ if(NOT DEFINED FLANN_DIR)
   set(FLANN_DIR ${proj_INSTALL})
   set(FLANN_ROOT ${FLANN_DIR})
 
-  set(MYPROJECT_PREFIX_PATH ${proj_INSTALL}^^${MYPROJECT_PREFIX_PATH})
+  set(IMAGECAPTURE_PREFIX_PATH ${proj_INSTALL}^^${IMAGECAPTURE_PREFIX_PATH})
   mitkFunctionInstallExternalCMakeProject(${proj})
 
   message("SuperBuild loading FLANN from ${FLANN_DIR}")

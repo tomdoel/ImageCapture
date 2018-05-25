@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -13,17 +13,17 @@
 =============================================================================*/
 #include <QGuiApplication>
 #include <QtQuick/QQuickView>
-#include "MyProjectConfigure.h"
-#include "mpTriangleModel.h"
+#include "ImageCaptureConfigure.h"
+#include "captureTriangleModel.h"
 
 int main(int argc, char *argv[])
 {
   QGuiApplication app(argc, argv);
   app.setOrganizationName("UCL");
   app.setApplicationName("QMLDemo");
-  app.setApplicationVersion(QString(MYPROJECT_VERSION_STRING));
+  app.setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
 
-  qmlRegisterType<mp::TriangleModel>("OpenGLUnderQML", 1, 0, "TriangleModel");
+  qmlRegisterType<capture::TriangleModel>("OpenGLUnderQML", 1, 0, "TriangleModel");
 
   QSurfaceFormat fmt;
   fmt.setDepthBufferSize(24);

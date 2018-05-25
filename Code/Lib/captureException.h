@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,22 +12,22 @@
 
 =============================================================================*/
 
-#ifndef mpException_h
-#define mpException_h
+#ifndef captureException_h
+#define captureException_h
 
-#include "mpWin32ExportHeader.h"
+#include "captureWin32ExportHeader.h"
 #include <stdexcept>
 #include <ostream>
 #include <sstream>
 
-namespace mp {
+namespace capture {
 
 /**
 * \class Exception
 * \brief Base exception class.
 * \ingroup types
 */
-class MYPROJECT_WINEXPORT Exception : public std::exception
+class IMAGECAPTURE_WINEXPORT Exception : public std::exception
 {
 public:
 

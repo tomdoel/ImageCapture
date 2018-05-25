@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -13,9 +13,9 @@
 =============================================================================*/
 
 #include <QVTKApplication.h>
-#include "MyProjectConfigure.h"
-#include "mpMainWindow.h"
-#include <mpVolumeRenderingModel.h>
+#include "ImageCaptureConfigure.h"
+#include "captureMainWindow.h"
+#include <captureVolumeRenderingModel.h>
 #include <QScopedPointer>
 
 #ifdef BUILD_VTK_OpenGL2
@@ -36,11 +36,11 @@ int main(int argc, char** argv)
   QVTKApplication app(argc, argv);
   app.setOrganizationName("UCL");
   app.setApplicationName("QtVTKDemo");
-  app.setApplicationVersion(QString(MYPROJECT_VERSION_STRING));
+  app.setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
 
-  QScopedPointer<mp::VolumeRenderingModel> mb(new mp::VolumeRenderingModel());
+  QScopedPointer<capture::VolumeRenderingModel> mb(new capture::VolumeRenderingModel());
 
-  mp::MainWindow mainWin(mb.data());
+  capture::MainWindow mainWin(mb.data());
 
   mainWin.show();
   mainWin.ConnectRenderer();

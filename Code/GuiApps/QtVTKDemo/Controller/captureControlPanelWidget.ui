@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="mp::TwinSliderWidget" name="m_TwinSliderWidget" native="true"/>
+    <widget class="capture::TwinSliderWidget" name="m_TwinSliderWidget" native="true"/>
    </item>
    <item>
     <widget class="QPushButton" name="m_ExampleButton">
@@ -41,9 +41,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>mp::TwinSliderWidget</class>
+   <class>capture::TwinSliderWidget</class>
    <extends>QWidget</extends>
-   <header location="global">mpTwinSliderWidget.h</header>
+   <header location="global">captureTwinSliderWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

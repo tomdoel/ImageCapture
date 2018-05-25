@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -13,8 +13,8 @@
 =============================================================================*/
 
 #include "catch.hpp"
-#include "mpCatchMain.h"
-#include "mpMyFunctions.h"
+#include "captureCatchMain.h"
+#include "captureMyFunctions.h"
 #include <iostream>
 #include <vector>
 
@@ -29,5 +29,5 @@ TEST_CASE( "My second test", "[some group identifier]" ) {
 }
 
 TEST_CASE( "Simple add", "[MyFirstAddFunction]") {
-  REQUIRE( mp::MyFirstAddFunction(1, 2) == 3);
+  REQUIRE( capture::MyFirstAddFunction(1, 2) == 3);
 }

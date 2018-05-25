@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -34,7 +34,7 @@ if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
 
 elseif(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 
-  find_library(glog_LIBRARY NAMES glog${MYPROJECT_SUPERBUILD_DEBUG_POSTFIX}
+  find_library(glog_LIBRARY NAMES glog${IMAGECAPTURE_SUPERBUILD_DEBUG_POSTFIX}
                PATHS ${glog_LIBRARY_DIR}
                PATH_SUFFIXES Debug
                NO_DEFAULT_PATH)
@@ -47,6 +47,6 @@ if(glog_LIBRARY AND glog_INC)
   set(glog_INCLUDE_DIR ${_inc_dir})
 endif()
 
-message( "MYPROJECT Findglog.cmake: glog_INCLUDE_DIR: ${glog_INCLUDE_DIR}" )
-message( "MYPROJECT Findglog.cmake: glog_LIBRARY_DIR: ${glog_LIBRARY_DIR}" )
-message( "MYPROJECT Findglog.cmake: glog_LIBRARY:     ${glog_LIBRARY}" )
+message( "IMAGECAPTURE Findglog.cmake: glog_INCLUDE_DIR: ${glog_INCLUDE_DIR}" )
+message( "IMAGECAPTURE Findglog.cmake: glog_LIBRARY_DIR: ${glog_LIBRARY_DIR}" )
+message( "IMAGECAPTURE Findglog.cmake: glog_LIBRARY:     ${glog_LIBRARY}" )

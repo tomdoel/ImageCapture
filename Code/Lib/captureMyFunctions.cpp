@@ -1,6 +1,6 @@
 /*=============================================================================
 
-  MYPROJECT: A software package for whatever.
+  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 
   Copyright (c) University College London (UCL). All rights reserved.
 
@@ -12,10 +12,10 @@
 
 =============================================================================*/
 
-#include "mpMyFunctions.h"
+#include "captureMyFunctions.h"
 #include <iostream>
 
-namespace mp {
+namespace capture {
 
 //-----------------------------------------------------------------------------
 int MyFirstAddFunction(int a, int b)

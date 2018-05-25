@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,7 +12,7 @@
 #
 #============================================================================*/
 
-if(MYPROJECT_USE_OPENMP)
+if(IMAGECAPTURE_USE_OPENMP)
   # Borrowed from PCL-1.8
   if((NOT APPLE) OR (NOT CMAKE_COMPILER_IS_GNUCXX) OR (GCC_VERSION VERSION_GREATER 4.2.1) OR (CMAKE_COMPILER_IS_CLANG))
     find_package(OpenMP)
@@ -42,9 +42,9 @@ if(MYPROJECT_USE_OPENMP)
       endif(MSVC)
     endif()
   else()
-    message(FATAL_ERROR "You requested OpenMP, but your compiler does not support it. Please turn MYPROJECT_USE_OPENMP off.")
+    message(FATAL_ERROR "You requested OpenMP, but your compiler does not support it. Please turn IMAGECAPTURE_USE_OPENMP off.")
   endif()
   if(NOT OpenMP_FOUND)
-    message(FATAL_ERROR "You requested OpenMP, but it was not found. Please turn MYPROJECT_USE_OPENMP off.")
+    message(FATAL_ERROR "You requested OpenMP, but it was not found. Please turn IMAGECAPTURE_USE_OPENMP off.")
   endif()
 endif()

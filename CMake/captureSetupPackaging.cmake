@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,15 +12,15 @@
 #
 #============================================================================*/
 
-set(MYPROJECT_PACKAGE_NAME "MyProject" CACHE STRING "")
+set(IMAGECAPTURE_PACKAGE_NAME "ImageCapture" CACHE STRING "")
 if(WIN32)
-  set(MYPROJECT_BASE_NAME "MyProject" CACHE STRING "")
+  set(IMAGECAPTURE_BASE_NAME "ImageCapture" CACHE STRING "")
 else()
-  set(MYPROJECT_BASE_NAME "myproject" CACHE STRING "")
+  set(IMAGECAPTURE_BASE_NAME "imagecapture" CACHE STRING "")
 endif()
-set(MYPROJECT_VERSION_STRING "${MYPROJECT_VERSION_MAJOR}.${MYPROJECT_VERSION_MINOR}.${MYPROJECT_VERSION_PATCH}" CACHE STRING "String to describe fully named version" FORCE)
-set(MYPROJECT_DEPLOY_NAME "${MYPROJECT_BASE_NAME}-${MYPROJECT_VERSION_STRING}" CACHE STRING "" FORCE)
-set(MYPROJECT_CONTACT "Your Name Here <your@email.com>" CACHE STRING "")
+set(IMAGECAPTURE_VERSION_STRING "${IMAGECAPTURE_VERSION_MAJOR}.${IMAGECAPTURE_VERSION_MINOR}.${IMAGECAPTURE_VERSION_PATCH}" CACHE STRING "String to describe fully named version" FORCE)
+set(IMAGECAPTURE_DEPLOY_NAME "${IMAGECAPTURE_BASE_NAME}-${IMAGECAPTURE_VERSION_STRING}" CACHE STRING "" FORCE)
+set(IMAGECAPTURE_CONTACT "Your Name Here <your@email.com>" CACHE STRING "")
 
 # 1. Setup defaults, common for all generators.
 include(CPackSetup)
@@ -33,7 +33,7 @@ if (WIN32)
   set(DESKTOP_ICONS_REMOVE_STRING "")
   set(DESKTOP_ICONS_REMOVE_STRING "")
 
-  get_property(_apps GLOBAL PROPERTY MYPROJECT_GUI_APPS)
+  get_property(_apps GLOBAL PROPERTY IMAGECAPTURE_GUI_APPS)
 
   foreach(app_name ${_apps})
 
@@ -56,13 +56,13 @@ endif()
 #    cmake_install.cmake files.
 
 configure_file(${CMAKE_SOURCE_DIR}/CMake/CPackOptions.cmake.in
-               ${CMAKE_BINARY_DIR}/MYPROJECTCPackOptions.cmake @ONLY IMMEDIATE)
+               ${CMAKE_BINARY_DIR}/IMAGECAPTURECPackOptions.cmake @ONLY IMMEDIATE)
 
 # 4. Set a variable with the name of this file.
-set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/MYPROJECTCPackOptions.cmake")
+set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/IMAGECAPTURECPackOptions.cmake")
 
 # 5. Include this optional file.
-include(MYPROJECTCPackOptions)
+include(IMAGECAPTURECPackOptions)
 
 # 6. Include CPack module once all variables are set.
 include(CPack)

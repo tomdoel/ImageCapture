@@ -1,6 +1,6 @@
 #/*============================================================================
 #
-#  MYPROJECT: A software package for whatever.
+#  IMAGECAPTURE: A software package for capturing images from input devices and rendering to vide outputs.
 #
 #  Copyright (c) University College London (UCL). All rights reserved.
 #
@@ -12,8 +12,8 @@
 #
 #============================================================================*/
 
-OPTION(MYPROJECT_USE_CPPCHECK "Enable the use of CppCheck for static analysis." OFF)
-IF(MYPROJECT_USE_CPPCHECK)
+OPTION(IMAGECAPTURE_USE_CPPCHECK "Enable the use of CppCheck for static analysis." OFF)
+IF(IMAGECAPTURE_USE_CPPCHECK)
 
   # Set the required CppCheck version
   SET(CPPCHECK_REQ_MAJOR 1)
@@ -55,34 +55,34 @@ IF(MYPROJECT_USE_CPPCHECK)
       #
       #  Define file names
       #
-      SET(CPPCHECK_MYPROJECT_FILES_LIST
-        ${PROJECT_BINARY_DIR}/Utilities/CppCheck/MYPROJECTFiles.txt)
+      SET(CPPCHECK_IMAGECAPTURE_FILES_LIST
+        ${PROJECT_BINARY_DIR}/Utilities/CppCheck/IMAGECAPTUREFiles.txt)
 
       #
       # Configure the files
       #
       CONFIGURE_FILE(
-        ${PROJECT_SOURCE_DIR}/Utilities/CppCheck/MYPROJECTFiles.txt.in
-        ${CPPCHECK_MYPROJECT_FILES_LIST})
+        ${PROJECT_SOURCE_DIR}/Utilities/CppCheck/IMAGECAPTUREFiles.txt.in
+        ${CPPCHECK_IMAGECAPTURE_FILES_LIST})
 
       SET(CPPCHECK_ARGUMENTS_CODE
-        --file-list=${CPPCHECK_MYPROJECT_FILES_LIST}
+        --file-list=${CPPCHECK_IMAGECAPTURE_FILES_LIST}
         --enable=warning,style,performance,portability,missingInclude
         --error-exitcode=2
         --quiet
       )
 
       ADD_CUSTOM_COMMAND(
-        OUTPUT  ${MYPROJECT_BINARY_DIR}/CppCheckCodeReport.txt
+        OUTPUT  ${IMAGECAPTURE_BINARY_DIR}/CppCheckCodeReport.txt
         COMMAND ${CPPCHECK_EXECUTABLE}
         ARGS    ${CPPCHECK_ARGUMENTS_CODE}
         COMMENT "Coding Style Checker"
       )
 
-      ADD_CUSTOM_TARGET(StaticallyAnalyzeCode DEPENDS ${MYPROJECT_BINARY_DIR}/CppCheckCodeReport.txt)
+      ADD_CUSTOM_TARGET(StaticallyAnalyzeCode DEPENDS ${IMAGECAPTURE_BINARY_DIR}/CppCheckCodeReport.txt)
 
       ADD_TEST(CppCheck ${CPPCHECK_EXECUTABLE} ${CPPCHECK_ARGUMENTS_CODE})
 
     ENDIF(CPPCHECK_FOUND)
   ENDIF(CPPCHECK_EXECUTABLE)
-ENDIF(MYPROJECT_USE_CPPCHECK)
+ENDIF(IMAGECAPTURE_USE_CPPCHECK)

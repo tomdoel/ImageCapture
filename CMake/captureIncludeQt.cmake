@@ -13,7 +13,7 @@
 #============================================================================*/
 
 if(IMAGECAPTURE_USE_QT)
-  set(_qt_components Core Concurrent PrintSupport Script Sql Svg Xml XmlPatterns)
+  set(_qt_components Core Concurrent PrintSupport Script Sql Svg Xml XmlPatterns Multimedia MultimediaWidgets)
   if(BUILD_QtVTKDemo OR BUILD_QOpenGLDemo)
     list(APPEND _qt_components OpenGL Gui Widgets UiTools Help)
   endif()

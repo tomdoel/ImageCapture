@@ -14,6 +14,11 @@
 
 #include "captureOpenGLMainWindow.h"
 #include "captureOpenGLWidget.h"
+#include "captureOpenGLImage.h"
+#include "captureMainWidget.h"
+#include "captureCameraWidget.h"
+#include "captureLabelImage.h"
+#include <QVBoxLayout>
 
 namespace capture
 {
@@ -21,9 +26,26 @@ namespace capture
 //-----------------------------------------------------------------------------
 OpenGLMainWindow::OpenGLMainWindow()
 {
-  m_Widget = new OpenGLWidget;
-  this->setCentralWidget(m_Widget);
-  this->setWindowTitle(tr("OpenGLMainWindow"));
+    MainWidget *mainWidget = new MainWidget;
+
+    m_Widget = new OpenGLWidget;
+    m_image_widget = new OpenGLImage;
+
+    CameraWidget *cameraWidget = new CameraWidget;
+    LabelImage* labelImage = new LabelImage();
+    cameraWidget->addListener(m_image_widget);
+    cameraWidget->addListener(labelImage);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainWidget->setLayout(mainLayout);
+
+    mainLayout->addWidget(labelImage);
+    mainLayout->addWidget(this->m_image_widget);
+    mainLayout->addWidget(this->m_Widget);
+
+    this->setCentralWidget(mainWidget);
+
+    this->setWindowTitle(tr("OpenGL Main Window"));
 }
 
 } // end namespace

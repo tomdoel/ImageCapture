@@ -21,6 +21,7 @@ namespace capture
 {
 
 class OpenGLWidget;
+class OpenGLImage;
 
 /**
  * \class OpenGLMainWindow
@@ -34,8 +35,8 @@ public:
   OpenGLMainWindow();
 
 private:
-
   OpenGLWidget *m_Widget;
+  OpenGLImage *m_image_widget;
 };
 
 } // end namespace

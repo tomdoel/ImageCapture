@@ -6,7 +6,12 @@
 #include <list>
 #include "captureVideoOutput.h"
 
+namespace cl {
+class AbstractImage;
+}
+
 namespace capture {
+
 
 class VideoFileSurface : public QAbstractVideoSurface
 {
@@ -20,7 +25,7 @@ class VideoFileSurface : public QAbstractVideoSurface
         void addListener(VideoOutput*);
 
     private:
-        QImage* convert(QVideoFrame& frame);
+        QImage* convert(cl::AbstractImage& frame);
         std::list<VideoOutput*> m_video_outputs;
 };
 

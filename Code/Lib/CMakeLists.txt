@@ -37,6 +37,8 @@ target_link_libraries(${IMAGECAPTURE_LIBRARY_NAME} PRIVATE ${ALL_THIRD_PARTY_LIB
 IMAGECAPTURE_INSTALL_HEADERS()
 IMAGECAPTURE_INSTALL_LIBRARY(${IMAGECAPTURE_LIBRARY_NAME})
 
+add_subdirectory(CaptureLib)
+
 if(BUILD_Python_Boost)
   add_subdirectory(PythonBoost)
 endif()

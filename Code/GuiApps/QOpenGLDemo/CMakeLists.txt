@@ -29,6 +29,7 @@ set(APP_SRCS
   captureVideoFileSurface.cpp
   captureLabelImage.cpp
   captureVideoOutput.cpp
+  qvideoframewrapper.cpp
 )
 
 set(APP_MOC_HDRS
@@ -43,6 +44,7 @@ set(APP_MOC_HDRS
 
 set(APP_HDRS
   captureOpenGLMainWindow.h
+  qvideoframewrapper.h
 )
 
 set(APP_RES

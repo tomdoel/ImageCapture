@@ -1,6 +1,8 @@
 #include "captureVideoFileSurface.h"
 #include <QPixmap>
 #include <iterator>
+#include "CaptureLib/convert.h"
+#include "qvideoframewrapper.h"
 
 namespace capture {
 
@@ -21,17 +23,8 @@ QList<QVideoFrame::PixelFormat> VideoFileSurface::supportedPixelFormats(
 
 bool VideoFileSurface::present(const QVideoFrame &frame)
 {
-    QVideoFrame frametodraw(frame);
 
-    if(!frametodraw.map(QAbstractVideoBuffer::ReadOnly))
-    {
-       setError(ResourceError);
-       return false;
-    }
-
-     //this is a shallow operation. it just refer the frame buffer
-    QVideoFrame::PixelFormat framePixelFormat = frame.pixelFormat();
-    QImage::Format imageFormat = QVideoFrame::imageFormatFromPixelFormat(frame.pixelFormat());
+    QVideoFrameWrapper frametodraw(frame);
 
     // Convert from UYVY to RGB
     QImage* image = convert(frametodraw);
@@ -43,9 +36,6 @@ bool VideoFileSurface::present(const QVideoFrame &frame)
     // Delete the allocated QImage object
     delete image;
 
-    //we can release the data
-    frametodraw.unmap();
-
     return true;
 }
 
@@ -55,14 +45,16 @@ void VideoFileSurface::addListener(VideoOutput *output)
 }
 
 
-QImage* VideoFileSurface::convert(QVideoFrame& frame) {
+QImage* VideoFileSurface::convert(cl::AbstractImage& frame) {
 
+
+//    image2 = convert
     int width = frame.width();
     int height = frame.height();
 
     unsigned char* rgb_image = new unsigned char[width * height * 3]; //width and height of the image to be converted
 
-    unsigned char* uyuy_image = frame.bits(); // Frame is already mapped
+    unsigned char* uyuy_image = frame.data(); // Frame is already mapped
     int y;
     int cr;
     int cb;

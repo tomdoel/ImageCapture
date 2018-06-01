@@ -12,34 +12,35 @@
 
 =============================================================================*/
 
-#ifndef captureOpenGLMainWindow_h
-#define captureOpenGLMainWindow_h
+#pragma once
 
-#include <QMainWindow>
+#include <QWindow>
 #include <QCameraInfo>
 
 namespace capture
 {
 
-class OpenGLWidget;
-class OpenGLImage;
+    class OpenGLWidget;
+    class OpenGLImage;
 
-/**
+    /**
  * \class OpenGLMainWindow
- * \brief Demo QMainWindow subclass just to hold our OpenGLWidget.
+ * \brief Demo
  */
-class OpenGLMainWindow : public QMainWindow
-{
+    class OpenGLMainWindow
+    {
 
-public:
+        public:
 
-  OpenGLMainWindow(const QCameraInfo&);
+            OpenGLMainWindow(const QCameraInfo&);
 
-private:
-  OpenGLWidget *m_Widget;
-  OpenGLImage *m_image_widget;
-};
+            void show();
 
-} // end namespace
+        private:
+            OpenGLWidget *m_Widget;
+            OpenGLImage *m_image_widget;
+    };
 
-#endif
+}
+
+

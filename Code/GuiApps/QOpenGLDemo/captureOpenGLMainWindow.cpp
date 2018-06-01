@@ -15,7 +15,6 @@
 #include "captureOpenGLMainWindow.h"
 #include "captureOpenGLWidget.h"
 #include "captureOpenGLImage.h"
-#include "captureMainWidget.h"
 #include "captureCameraWidget.h"
 #include "captureLabelImage.h"
 #include <QVBoxLayout>
@@ -23,26 +22,24 @@
 namespace capture
 {
 
-//-----------------------------------------------------------------------------
-OpenGLMainWindow::OpenGLMainWindow(const QCameraInfo& camera_info)
-{
-    MainWidget *mainWidget = new MainWidget;
+    //-----------------------------------------------------------------------------
+    OpenGLMainWindow::OpenGLMainWindow(const QCameraInfo& camera_info)
+    {
+        QWidget* mainWidget = new QWidget;
 
-    m_Widget = new OpenGLWidget;
-    m_image_widget = new OpenGLImage;
+        m_Widget = new OpenGLWidget;
+        m_image_widget = new OpenGLImage;
 
-    CameraWidget *cameraWidget = new CameraWidget(camera_info);
-    cameraWidget->addListener(m_image_widget);
+        CameraWidget *cameraWidget = new CameraWidget(camera_info);
+        cameraWidget->addListener(m_image_widget);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout;
-    mainWidget->setLayout(mainLayout);
+        QVBoxLayout *mainLayout = new QVBoxLayout;
+        mainWidget->setLayout(mainLayout);
 
-    mainLayout->addWidget(this->m_image_widget);
-    mainLayout->addWidget(this->m_Widget);
+        mainLayout->addWidget(this->m_image_widget);
+        mainLayout->addWidget(this->m_Widget);
 
-    this->setCentralWidget(mainWidget);
+        mainWidget->showMaximized();
+    }
 
-    this->setWindowTitle(tr("OpenGL Main Window"));
 }
-
-} // end namespace

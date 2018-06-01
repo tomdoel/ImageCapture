@@ -8,13 +8,9 @@
 
 namespace capture {
 
-CameraWidget::CameraWidget(QWidget *parent)// : QWidget(parent)
+CameraWidget::CameraWidget(const QCameraInfo& camera_info)
 {
-    QCamera *camera = new QCamera(QCameraInfo::availableCameras().at(0));
-//    QCameraViewfinder *viewFinder = new QCameraViewfinder(this);
-//    viewFinder->setGeometry(00,00,400,300);
-//    viewFinder->show();
-//    camera->setViewfinder(viewFinder);
+    QCamera *camera = new QCamera(camera_info);
 
     m_video_file_surface = new VideoFileSurface();
     camera->setViewfinder(m_video_file_surface);

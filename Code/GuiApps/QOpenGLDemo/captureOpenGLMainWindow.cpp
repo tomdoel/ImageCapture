@@ -24,14 +24,14 @@ namespace capture
 {
 
 //-----------------------------------------------------------------------------
-OpenGLMainWindow::OpenGLMainWindow()
+OpenGLMainWindow::OpenGLMainWindow(const QCameraInfo& camera_info)
 {
     MainWidget *mainWidget = new MainWidget;
 
     m_Widget = new OpenGLWidget;
     m_image_widget = new OpenGLImage;
 
-    CameraWidget *cameraWidget = new CameraWidget;
+    CameraWidget *cameraWidget = new CameraWidget(camera_info);
     LabelImage* labelImage = new LabelImage();
     cameraWidget->addListener(m_image_widget);
     cameraWidget->addListener(labelImage);

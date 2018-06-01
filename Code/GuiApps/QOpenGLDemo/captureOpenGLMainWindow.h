@@ -16,6 +16,7 @@
 #define captureOpenGLMainWindow_h
 
 #include <QMainWindow>
+#include <QCameraInfo>
 
 namespace capture
 {
@@ -32,7 +33,7 @@ class OpenGLMainWindow : public QMainWindow
 
 public:
 
-  OpenGLMainWindow();
+  OpenGLMainWindow(const QCameraInfo&);
 
 private:
   OpenGLWidget *m_Widget;

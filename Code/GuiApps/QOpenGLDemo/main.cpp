@@ -18,38 +18,24 @@
 #include "ImageCaptureConfigure.h"
 #include "captureOpenGLWidget.h"
 #include "captureOpenGLMainWindow.h"
+#include "cameradetector.h"
+#include "capturecontroller.h"
 
 int main(int argc, char *argv[])
 {
-  QApplication app(argc, argv);
-  app.setOrganizationName("UCL");
-  app.setApplicationName("QOpenGLDemo");
-  app.setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
+    QApplication app(argc, argv);
+    app.setOrganizationName("UCL");
+    app.setApplicationName("QOpenGLDemo");
+    app.setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
 
-  QSurfaceFormat fmt;
-  fmt.setDepthBufferSize(24);
-  fmt.setVersion(3, 2);
-  fmt.setProfile(QSurfaceFormat::CoreProfile);
-  QSurfaceFormat::setDefaultFormat(fmt);
+    capture::CaptureController controller;
 
-  capture::OpenGLMainWindow mainWindow;
-  capture::OpenGLWidget::setTransparent(false);
-  if (capture::OpenGLWidget::isTransparent())
-  {
-    mainWindow.setAttribute(Qt::WA_TranslucentBackground);
-    mainWindow.setAttribute(Qt::WA_NoSystemBackground, false);
-  }
-  mainWindow.resize(mainWindow.sizeHint());
-  int desktopArea = QApplication::desktop()->width() *
-                    QApplication::desktop()->height();
-  int widgetArea = mainWindow.width() * mainWindow.height();
-  if (((float)widgetArea / (float)desktopArea) < 0.75f)
-  {
-    mainWindow.show();
-  }
-  else
-  {
-    mainWindow.showMaximized();
-  }
-  return app.exec();
+    QSurfaceFormat fmt;
+    fmt.setDepthBufferSize(24);
+    fmt.setVersion(3, 2);
+    fmt.setProfile(QSurfaceFormat::CoreProfile);
+    QSurfaceFormat::setDefaultFormat(fmt);
+
+    controller.updateWindows();
+    return app.exec();
 }

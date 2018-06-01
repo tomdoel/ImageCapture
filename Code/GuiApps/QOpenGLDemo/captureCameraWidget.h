@@ -2,6 +2,7 @@
 #define CameraWidget_H
 
 #include <QWidget>
+#include <QCameraInfo>
 #include "captureVideoOutput.h"
 #include "captureVideoFileSurface.h"
 
@@ -10,7 +11,7 @@ namespace capture {
 class CameraWidget
 {
     public:
-        explicit CameraWidget(QWidget *parent = nullptr);
+        explicit CameraWidget(const QCameraInfo& camera_info);
 
         void addListener(VideoOutput*);
 

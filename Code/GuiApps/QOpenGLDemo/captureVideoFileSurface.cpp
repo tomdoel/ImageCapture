@@ -47,8 +47,6 @@ void VideoFileSurface::addListener(VideoOutput *output)
 
 QImage* VideoFileSurface::convert(cl::AbstractImage& frame) {
 
-
-//    image2 = convert
     int width = frame.width();
     int height = frame.height();
 

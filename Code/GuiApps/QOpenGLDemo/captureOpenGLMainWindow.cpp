@@ -32,14 +32,11 @@ OpenGLMainWindow::OpenGLMainWindow(const QCameraInfo& camera_info)
     m_image_widget = new OpenGLImage;
 
     CameraWidget *cameraWidget = new CameraWidget(camera_info);
-    LabelImage* labelImage = new LabelImage();
     cameraWidget->addListener(m_image_widget);
-    cameraWidget->addListener(labelImage);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainWidget->setLayout(mainLayout);
 
-    mainLayout->addWidget(labelImage);
     mainLayout->addWidget(this->m_image_widget);
     mainLayout->addWidget(this->m_Widget);
 

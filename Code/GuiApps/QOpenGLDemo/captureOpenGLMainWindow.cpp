@@ -23,9 +23,12 @@ namespace capture
 {
 
     //-----------------------------------------------------------------------------
-    OpenGLMainWindow::OpenGLMainWindow(const QCameraInfo& camera_info)
+    OpenGLMainWindow::OpenGLMainWindow(const QCameraInfo& camera_info) : QObject()
     {
-        QWidget* mainWidget = new QWidget;
+        m_id = camera_info.deviceName();
+        m_main_widget = new QWidget;
+        m_main_widget->setAttribute( Qt::WA_DeleteOnClose );
+        connect(m_main_widget, &QWidget::destroyed, this, &OpenGLMainWindow::mainWidgetDestroyed);
 
         m_Widget = new OpenGLWidget;
         m_image_widget = new OpenGLImage;
@@ -34,12 +37,23 @@ namespace capture
         cameraWidget->addListener(m_image_widget);
 
         QVBoxLayout *mainLayout = new QVBoxLayout;
-        mainWidget->setLayout(mainLayout);
+        m_main_widget->setLayout(mainLayout);
 
         mainLayout->addWidget(this->m_image_widget);
         mainLayout->addWidget(this->m_Widget);
 
-        mainWidget->showMaximized();
+        m_main_widget->showMaximized();
+    }
+
+    void OpenGLMainWindow::mainWidgetDestroyed() {
+        emit windowHasClosed(m_id);
+    }
+
+    void OpenGLMainWindow::setScreen(QScreen* screen) {
+        m_main_widget->windowHandle()->setScreen(screen);
+        QRect geometry = screen->virtualGeometry();
+        m_main_widget->move(geometry.x(), geometry.y());
+        m_main_widget->showFullScreen();
     }
 
 }

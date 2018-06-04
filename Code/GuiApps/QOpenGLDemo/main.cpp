@@ -20,22 +20,10 @@
 #include "captureOpenGLMainWindow.h"
 #include "cameradetector.h"
 #include "capturecontroller.h"
+#include "captureapplication.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    app.setOrganizationName("UCL");
-    app.setApplicationName("QOpenGLDemo");
-    app.setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
-
-    capture::CaptureController controller;
-
-    QSurfaceFormat fmt;
-    fmt.setDepthBufferSize(24);
-    fmt.setVersion(3, 2);
-    fmt.setProfile(QSurfaceFormat::CoreProfile);
-    QSurfaceFormat::setDefaultFormat(fmt);
-
-    controller.updateWindows();
-    return app.exec();
+    capture::CaptureApplication app(argc, argv);
+    return app.run();
 }

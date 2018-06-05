@@ -11,6 +11,8 @@ namespace capture {
     {
         public:
             ScreenMapper(std::shared_ptr<OutputDisplayController>, std::shared_ptr<ScreenController>);
+            ~ScreenMapper();
+
             void orderScreens();
 
         private:

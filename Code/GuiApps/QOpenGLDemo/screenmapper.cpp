@@ -6,8 +6,10 @@
 
 namespace capture {
     ScreenMapper::ScreenMapper(std::shared_ptr<OutputDisplayController> output_display_controller, std::shared_ptr<ScreenController> screen_controller)
-        : m_output_display_controller(output_display_controller), m_screen_controller(screen_controller)
-    {
+        : m_output_display_controller(output_display_controller), m_screen_controller(screen_controller) {
+    }
+
+    ScreenMapper::~ScreenMapper() {
     }
 
     void ScreenMapper::orderScreens()

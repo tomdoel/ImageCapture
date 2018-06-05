@@ -1,58 +1,35 @@
 #include "outputdisplaycontroller.h"
 
-#include <QGuiApplication>
-
 namespace capture {
-    OutputDisplayController::OutputDisplayController(QObject *parent) : QObject(parent)
-    {
-        orderScreens();
+    OutputDisplayController::OutputDisplayController(QObject *parent) : QObject(parent) {
     }
 
     OutputDisplayController::~OutputDisplayController() {
-
     }
 
-    void OutputDisplayController::screensChanged()
+    std::map<std::string, std::unique_ptr<OpenGLMainWindow> > const& OutputDisplayController::getCaptureWindows() const
     {
-        orderScreens();
+        return m_capture_windows;
     }
 
-    void OutputDisplayController::orderScreens()
-    {
-        QList<QScreen*> screens = QGuiApplication::screens();
-        QScreen* primary = QGuiApplication::primaryScreen();
-        screens.removeAll(primary);
+    void OutputDisplayController::clearWindows() {
+        m_capture_windows.clear();
+        emit outputDisplaysChanged();
+    }
 
-        QList<QScreen*>::const_iterator screen_iter = screens.begin();
-        for (std::set<OpenGLMainWindow*>::iterator capture_window_iter = m_capture_windows.begin(); capture_window_iter != m_capture_windows.end(); capture_window_iter++) {
-            if (screen_iter == screens.end()) {
-                (*capture_window_iter)->setScreen(primary);
-            } else {
-                (*capture_window_iter)->setScreen(*screen_iter);
-                screen_iter++;
-            }
+    void OutputDisplayController::createWindowForCamera(const QCameraInfo& camera_info) {
+        std::unique_ptr<OpenGLMainWindow> captureWindow(new OpenGLMainWindow(camera_info));
+        std::string id = camera_info.deviceName().toStdString();
+        connect(captureWindow.get(), &OpenGLMainWindow::windowHasClosed, this, &OutputDisplayController::WindowClosed);
+        m_capture_windows[id] = std::move(captureWindow);
+        emit outputDisplaysChanged();
+    }
+
+    void OutputDisplayController::WindowClosed(QString id) {
+        std::map<std::string, std::unique_ptr<OpenGLMainWindow> >::iterator iter = m_capture_windows.find(id.toStdString());
+        if (iter != m_capture_windows.end()) {
+            m_capture_windows.erase(iter);
+            emit outputDisplaysChanged();
         }
-    }
-
-    void OutputDisplayController::addCaptureOutput(OpenGLMainWindow * capture_window)
-    {
-        m_capture_windows.insert(capture_window);
-        orderScreens();
-    }
-
-    void OutputDisplayController::removeCaptureOutput(OpenGLMainWindow *capture_window)
-    {
-        m_capture_windows.erase(capture_window);
-        orderScreens();
-    }
-
-    void OutputDisplayController::addScreen(QScreen *)
-    {
-
-    }
-
-    void OutputDisplayController::removeScreen(QScreen *)
-    {
-
     }
 }

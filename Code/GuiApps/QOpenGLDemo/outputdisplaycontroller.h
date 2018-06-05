@@ -2,10 +2,19 @@
 
 #include <QObject>
 #include <QScreen>
-#include "captureOpenGLMainWindow.h"
+#include <QString>
+#include <QCameraInfo>
+#include <map>
 #include <set>
+#include <string>
+#include <memory>
+
+#include "captureOpenGLMainWindow.h"
 
 namespace capture {
+
+    class OpenGLMainWindow;
+
     class OutputDisplayController : public QObject
     {
             Q_OBJECT
@@ -14,20 +23,17 @@ namespace capture {
             explicit OutputDisplayController(QObject *parent = nullptr);
             ~OutputDisplayController();
 
-            void screensChanged();
+            std::map<std::string, std::unique_ptr<OpenGLMainWindow> > const& getCaptureWindows() const;
+
+            void clearWindows();
+            void createWindowForCamera(const QCameraInfo& camera_info);
 
         private:
-            void orderScreens();
+            std::map<std::string, std::unique_ptr<OpenGLMainWindow> > m_capture_windows;
 
-            std::set<OpenGLMainWindow*> m_capture_windows;
+            void WindowClosed(QString id);
 
         signals:
-
-        public slots:
-            void addCaptureOutput(OpenGLMainWindow*);
-            void removeCaptureOutput(OpenGLMainWindow*);
-            void addScreen(QScreen*);
-            void removeScreen(QScreen*);
+            void outputDisplaysChanged();
     };
-
 }

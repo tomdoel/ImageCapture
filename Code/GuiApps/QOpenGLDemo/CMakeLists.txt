@@ -33,6 +33,8 @@ set(APP_SRCS
   capturecontroller.cpp
   outputdisplaycontroller.cpp
   captureapplication.cpp
+  screencontroller.cpp
+  screenmapper.cpp
 )
 
 set(APP_MOC_HDRS
@@ -51,6 +53,8 @@ set(APP_MOC_HDRS
 set(APP_HDRS
   qvideoframewrapper.h
   cameradetector.h
+  screencontroller.h
+  screenmapper.h
 )
 
 set(APP_RES

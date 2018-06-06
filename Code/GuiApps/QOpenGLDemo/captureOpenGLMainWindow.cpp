@@ -50,9 +50,11 @@ namespace capture
     }
 
     void OpenGLMainWindow::setScreen(QScreen* screen) {
+        QRect screen_geometry = screen->geometry();
+//        QRect virtual_geometry = screen->virtualGeometry();
+        m_main_widget->move(screen_geometry.x(), screen_geometry.y());
+        m_main_widget->resize(screen_geometry.width(), screen_geometry.height());
         m_main_widget->windowHandle()->setScreen(screen);
-        QRect geometry = screen->virtualGeometry();
-        m_main_widget->move(geometry.x(), geometry.y());
         m_main_widget->showFullScreen();
     }
 

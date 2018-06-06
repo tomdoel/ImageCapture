@@ -5,6 +5,8 @@
 #include <QScreen>
 
 namespace capture {
+    class CaptureController;
+
     class CaptureApplication : public QObject
     {
             Q_OBJECT
@@ -16,14 +18,6 @@ namespace capture {
 
         private:
             std::unique_ptr<QApplication> m_app;
-            void updateScreens();
-
-        signals:
-            void screensChanged();
-
-        public slots:
-            void addScreen(QScreen* screen);
-            void removeScreen(QScreen* screen);
-
+            std::unique_ptr<CaptureController> m_controller;
     };
 }

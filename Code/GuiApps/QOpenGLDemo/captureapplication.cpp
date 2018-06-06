@@ -12,19 +12,17 @@ namespace capture {
         m_app->setApplicationName("QOpenGLDemo");
         m_app->setApplicationVersion(QString(IMAGECAPTURE_VERSION_STRING));
 
-        capture::CaptureController controller;
-
         QSurfaceFormat fmt;
         fmt.setDepthBufferSize(24);
         fmt.setVersion(3, 2);
         fmt.setProfile(QSurfaceFormat::CoreProfile);
         QSurfaceFormat::setDefaultFormat(fmt);
 
-        this->connect(m_app.get(), &QGuiApplication::screenAdded, this, &CaptureApplication::addScreen);
-        this->connect(m_app.get(), &QGuiApplication::screenRemoved, this, &CaptureApplication::removeScreen);
+        m_controller = std::unique_ptr<CaptureController>(new CaptureController());
+        this->connect(m_app.get(), &QGuiApplication::screenAdded, m_controller.get(), &CaptureController::screensChanged);
+        this->connect(m_app.get(), &QGuiApplication::screenRemoved, m_controller.get(), &CaptureController::screensChanged);
 
-        this->connect(this, &CaptureApplication::screensChanged, &controller, &CaptureController::screensChanged);
-        controller.updateWindows();
+        m_controller->updateWindows();
     }
 
     CaptureApplication::~CaptureApplication() {
@@ -32,19 +30,5 @@ namespace capture {
 
     int CaptureApplication::run() {
         return m_app->exec(); // ToDo: Delete m_app and implement abouttoquit
-    }
-
-    void CaptureApplication::updateScreens()
-    {
-    }
-
-    void CaptureApplication::addScreen(QScreen *screen)
-    {
-        emit screensChanged();
-    }
-
-    void CaptureApplication::removeScreen(QScreen *screen)
-    {
-        emit screensChanged();
     }
 }

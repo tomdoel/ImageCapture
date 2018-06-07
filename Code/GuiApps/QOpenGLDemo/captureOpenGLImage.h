@@ -59,12 +59,15 @@ private:
   static bool m_IsTransparent;
   bool        m_IsCore;
 
-  GLuint      m_vertex_array_id;
-  GLuint      m_vertex_buffer_id;
+  GLuint      m_video_vertex_array_id;
+  GLuint      m_overlay_vertex_array_id;
+  GLuint      m_video_vertex_buffer_id;
+  GLuint      m_overlay_vertex_buffer_id;
   GLuint      m_vertex_shader_id;
   GLuint      m_fragment_shader_id;
   GLuint      m_shader_program_id;
-  GLuint      m_element_buffer_id;
+  GLuint      m_video_element_buffer_id;
+  GLuint      m_overlay_element_buffer_id;
   GLuint      m_texture_id;
 
   int m_last_width;

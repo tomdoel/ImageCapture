@@ -28,12 +28,15 @@ namespace capture
         in vec2 position;
         in vec3 color;
         in vec2 texcoord;
+        in float useTex;
+        out float UseTex;
         out vec3 Color;
         out vec2 Texcoord;
         void main()
         {
             Color = color;
             Texcoord = texcoord;
+            UseTex = useTex;
             gl_Position = vec4(position, 0.0, 1.0);
         }
     )glsl";
@@ -42,6 +45,7 @@ namespace capture
         #version 330 core
         in vec3 Color;
         in vec2 Texcoord;
+        in float useTex;
         out vec4 outColor;
         uniform sampler2D tex;
         void main()
@@ -95,9 +99,12 @@ void OpenGLImage::cleanup()
     glDeleteProgram(m_shader_program_id);
     glDeleteShader(m_fragment_shader_id);
     glDeleteShader(m_vertex_shader_id);
-    glDeleteBuffers(1, &m_vertex_buffer_id);
-    glDeleteBuffers(1, &m_element_buffer_id);
-    glDeleteVertexArrays(1, &m_vertex_array_id);
+    glDeleteBuffers(1, &m_video_vertex_buffer_id);
+    glDeleteBuffers(1, &m_overlay_vertex_buffer_id);
+    glDeleteBuffers(1, &m_video_element_buffer_id);
+    glDeleteBuffers(1, &m_overlay_element_buffer_id);
+    glDeleteVertexArrays(1, &m_video_vertex_array_id);
+    glDeleteVertexArrays(1, &m_overlay_vertex_array_id);
 
     this->doneCurrent();
 }
@@ -107,48 +114,56 @@ void OpenGLImage::cleanup()
 void OpenGLImage::initializeGL()
 {
     connect(context(), &QOpenGLContext::aboutToBeDestroyed, this, &OpenGLImage::cleanup);
-
     initializeOpenGLFunctions();
-    checkError();
+    const qreal retinaScale = this->devicePixelRatio();
+    glViewport(0, 0, width() * retinaScale, height() * retinaScale);
+    glClearColor(0.0f, 0.0f, 0.0f, m_IsTransparent ? 0 : 1);
 
-    glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
-    checkError();
-
-    glGenVertexArrays(1, &m_vertex_array_id);
-    checkError();
-
-    glBindVertexArray(m_vertex_array_id);
-    checkError();
-
-    glGenBuffers(1, &m_vertex_buffer_id);
-    checkError();
-
-    GLfloat vertices[] = {
+    GLfloat video_vertices[] = {
     //  2xposition, 3xcolour, 2xtec coords
-        -1.0f,  1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, // Top left
-         1.0f,  1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // Top right
-         1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, // Bottom right
-        -1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f  // Bottom left
+        -1.0f,  1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, // Top left
+         1.0f,  1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, // Top right
+         1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, // Bottom right
+        -1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, // Bottom left
     };
 
-    glBindBuffer(GL_ARRAY_BUFFER, m_vertex_buffer_id);
-    checkError();
-
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    checkError();
-
-    glGenBuffers(1, &m_element_buffer_id);
-    checkError();
-
-    GLuint elements[] = {
+    GLuint video_elements[] = {
         0, 1, 2,
         2, 3, 0
     };
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_element_buffer_id);
-    checkError();
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
-    checkError();
+    GLfloat overlay_vertices[] = {
+        //  2xposition, 3xcolour, 2xtec coords
+       0.0f,  0.5f, 1.0f, 0.0f, 0.0f,  0.0f,  0.5f, 0.0f, // Vertex 1: Red
+       0.5f, -0.5f, 0.0f, 1.0f, 0.0f,  0.5f, -0.5f, 0.0f, // Vertex 2: Green
+      -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, -0.5f, -0.5f, 0.0f, // Vertex 3: Blue
+    };
+
+    GLuint overlay_elements[] = {
+        0, 1, 2
+    };
+
+
+
+    // Set up video
+    glGenVertexArrays(1, &m_video_vertex_array_id);
+    glBindVertexArray(m_video_vertex_array_id);
+
+    glGenBuffers(1, &m_video_vertex_buffer_id);
+    glBindBuffer(GL_ARRAY_BUFFER, m_video_vertex_buffer_id);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(video_vertices), video_vertices, GL_STATIC_DRAW);
+
+    glGenBuffers(1, &m_video_element_buffer_id);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_video_element_buffer_id);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(video_elements), video_elements, GL_STATIC_DRAW);
+
+
+
+
+
+
+
+    // Create shaders
 
     m_vertex_shader_id = glCreateShader(GL_VERTEX_SHADER);
     checkError();
@@ -221,25 +236,22 @@ void OpenGLImage::initializeGL()
     checkError();
 
     GLint posAttrib = glGetAttribLocation(m_shader_program_id, "position");
-    checkError();
     glEnableVertexAttribArray(posAttrib);
-    checkError();
-    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), 0);
-    checkError();
+    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), 0);
 
     GLint colAttrib = glGetAttribLocation(m_shader_program_id, "color");
-    checkError();
     glEnableVertexAttribArray(colAttrib);
-    checkError();
-    glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
-    checkError();
+    glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
 
     GLint texAttrib = glGetAttribLocation(m_shader_program_id, "texcoord");
-    checkError();
     glEnableVertexAttribArray(texAttrib);
+    glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(5 * sizeof(GLfloat)));
+
+    GLint useTexAttrib = glGetAttribLocation(m_shader_program_id, "useTex");
     checkError();
-    glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), (void*)(5 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(useTexAttrib);
     checkError();
+    glVertexAttribPointer(useTexAttrib, 1, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(7 * sizeof(GLfloat)));
 
     glGenTextures(1, &m_texture_id);
     checkError();
@@ -263,10 +275,31 @@ void OpenGLImage::initializeGL()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     checkError();
 
-    const qreal retinaScale = this->devicePixelRatio();
-    glViewport(0, 0, width() * retinaScale, height() * retinaScale);
 
-    glClearColor(0.0f, 0.0f, 0.0f, m_IsTransparent ? 0 : 1);
+
+
+
+
+
+    // Set up overlay
+
+    glGenVertexArrays(1, &m_overlay_vertex_array_id);
+    glBindVertexArray(m_overlay_vertex_array_id);
+
+    glGenBuffers(1, &m_overlay_vertex_buffer_id);
+    glBindBuffer(GL_ARRAY_BUFFER, m_overlay_vertex_buffer_id);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(overlay_vertices), overlay_vertices, GL_STATIC_DRAW);
+
+    glGenBuffers(1, &m_overlay_element_buffer_id);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_overlay_element_buffer_id);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(overlay_elements), overlay_elements, GL_STATIC_DRAW);
+
+
+
+
+
+
+
 }
 
 
@@ -279,7 +312,14 @@ void OpenGLImage::paintGL()
     glBindTexture(GL_TEXTURE_2D, m_texture_id); // Need to do this in the paintGL() call
     checkError();
 
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    // Video
+    glBindVertexArray(m_video_vertex_array_id);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)0);
+
+    // Overlay
+    glBindVertexArray(m_overlay_vertex_array_id);
+    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)0);
+
     checkError();
 }
 

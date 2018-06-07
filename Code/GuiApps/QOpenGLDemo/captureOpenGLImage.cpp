@@ -107,11 +107,8 @@ void OpenGLImage::cleanup()
     glDeleteShader(m_fragment_shader_id);
     glDeleteShader(m_vertex_shader_id);
     glDeleteBuffers(1, &m_video_vertex_buffer_id);
-    glDeleteBuffers(1, &m_overlay_vertex_buffer_id);
     glDeleteBuffers(1, &m_video_element_buffer_id);
-    glDeleteBuffers(1, &m_overlay_element_buffer_id);
     glDeleteVertexArrays(1, &m_video_vertex_array_id);
-    glDeleteVertexArrays(1, &m_overlay_vertex_array_id);
 
     this->doneCurrent();
 }
@@ -143,19 +140,6 @@ void OpenGLImage::initializeGL()
         4, 5, 6,
     };
 
-    GLfloat overlay_vertices[] = {
-        //  2xposition, 3xcolour, 2xtec coords
-       0.0f,  0.5f, 1.0f, 0.0f, 0.0f,  0.0f,  0.5f, 0.0f, // Vertex 1: Red
-       0.5f, -0.5f, 0.0f, 1.0f, 0.0f,  0.5f, -0.5f, 0.0f, // Vertex 2: Green
-      -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, -0.5f, -0.5f, 0.0f, // Vertex 3: Blue
-    };
-
-    GLuint overlay_elements[] = {
-        0, 1, 2
-    };
-
-
-
     // Set up video
     glGenVertexArrays(1, &m_video_vertex_array_id);
     glBindVertexArray(m_video_vertex_array_id);
@@ -167,12 +151,6 @@ void OpenGLImage::initializeGL()
     glGenBuffers(1, &m_video_element_buffer_id);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_video_element_buffer_id);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(video_elements), video_elements, GL_STATIC_DRAW);
-
-
-
-
-
-
 
     // Create shaders
 
@@ -287,31 +265,6 @@ void OpenGLImage::initializeGL()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     checkError();
 
-
-
-
-
-
-
-    // Set up overlay
-
-    glGenVertexArrays(1, &m_overlay_vertex_array_id);
-    glBindVertexArray(m_overlay_vertex_array_id);
-
-    glGenBuffers(1, &m_overlay_vertex_buffer_id);
-    glBindBuffer(GL_ARRAY_BUFFER, m_overlay_vertex_buffer_id);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(overlay_vertices), overlay_vertices, GL_STATIC_DRAW);
-
-    glGenBuffers(1, &m_overlay_element_buffer_id);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_overlay_element_buffer_id);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(overlay_elements), overlay_elements, GL_STATIC_DRAW);
-
-
-
-
-
-
-
 }
 
 
@@ -326,12 +279,8 @@ void OpenGLImage::paintGL()
 
     // Video
     glBindVertexArray(m_video_vertex_array_id);
+    checkError();
     glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, (void*)0);
-
-    // Overlay
-    glBindVertexArray(m_overlay_vertex_array_id);
-    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)0);
-
     checkError();
 }
 

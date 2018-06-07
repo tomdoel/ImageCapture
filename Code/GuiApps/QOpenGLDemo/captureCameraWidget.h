@@ -1,24 +1,22 @@
-#ifndef CameraWidget_H
-#define CameraWidget_H
+#pragma once
 
 #include <QWidget>
 #include <QCameraInfo>
-#include "captureVideoOutput.h"
-#include "captureVideoFileSurface.h"
 
 namespace capture {
 
-class CameraWidget
-{
-    public:
-        explicit CameraWidget(const QCameraInfo& camera_info);
+    class VideoFileSurface;
+    class VideoOutput;
 
-        void addListener(VideoOutput*);
+    class CameraWidget
+    {
+        public:
+            explicit CameraWidget(const QCameraInfo& camera_info);
 
-    private:
-        VideoFileSurface *m_video_file_surface;
-};
+            void addListener(VideoOutput*);
+
+        private:
+            VideoFileSurface *m_video_file_surface;
+    };
 
 }
-
-#endif // CameraWidget_H

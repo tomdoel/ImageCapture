@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <QObject>
 #include <QWindow>
 #include <QScreen>
@@ -22,8 +23,8 @@
 namespace capture
 {
 
-    class OpenGLWidget;
     class OpenGLImage;
+    class CameraWidget;
 
     /**
  * \class OpenGLMainWindow
@@ -31,11 +32,13 @@ namespace capture
  */
     class OpenGLMainWindow: public QObject
     {
+
             Q_OBJECT
 
         public:
 
             OpenGLMainWindow(const QCameraInfo&);
+            ~OpenGLMainWindow();
 
             void show();
             void setScreen(QScreen* screen);
@@ -44,10 +47,9 @@ namespace capture
             void windowHasClosed(QString);
 
         private:
-            OpenGLWidget *m_Widget;
-            OpenGLImage *m_image_widget;
+            std::unique_ptr<OpenGLImage> m_image_widget;
+            std::unique_ptr<CameraWidget> m_camera_widget;
             QString m_id;
-            QWidget* m_main_widget;
 
         private slots:
             void mainWidgetDestroyed();

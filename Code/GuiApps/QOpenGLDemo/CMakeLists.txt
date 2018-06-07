@@ -39,11 +39,8 @@ set(APP_SRCS
 
 set(APP_MOC_HDRS
   captureOpenGLWidget.h
-  captureCameraWidget.h
   captureOpenGLImage.h
-  captureVideoFileSurface.h
   captureLabelImage.h
-  captureVideoOutput.h
   outputdisplaycontroller.h
   captureapplication.h
   captureOpenGLMainWindow.h
@@ -51,6 +48,9 @@ set(APP_MOC_HDRS
 )
 
 set(APP_HDRS
+  captureVideoFileSurface.h
+  captureCameraWidget.h
+  captureVideoOutput.h
   qvideoframewrapper.h
   cameradetector.h
   screencontroller.h

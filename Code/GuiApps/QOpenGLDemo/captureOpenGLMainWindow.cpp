@@ -13,11 +13,8 @@
 =============================================================================*/
 
 #include "captureOpenGLMainWindow.h"
-#include "captureOpenGLWidget.h"
 #include "captureOpenGLImage.h"
 #include "captureCameraWidget.h"
-#include "captureLabelImage.h"
-#include <QVBoxLayout>
 
 namespace capture
 {
@@ -26,23 +23,18 @@ namespace capture
     OpenGLMainWindow::OpenGLMainWindow(const QCameraInfo& camera_info) : QObject()
     {
         m_id = camera_info.deviceName();
-        m_main_widget = new QWidget;
-        m_main_widget->setAttribute( Qt::WA_DeleteOnClose );
-        connect(m_main_widget, &QWidget::destroyed, this, &OpenGLMainWindow::mainWidgetDestroyed);
+        m_image_widget = std::unique_ptr<OpenGLImage>(new OpenGLImage);
+        m_image_widget->setAttribute( Qt::WA_DeleteOnClose );
+        connect(m_image_widget.get(), &QWidget::destroyed, this, &OpenGLMainWindow::mainWidgetDestroyed);
 
-        m_Widget = new OpenGLWidget;
-        m_image_widget = new OpenGLImage;
+        m_camera_widget = std::unique_ptr<CameraWidget>(new CameraWidget(camera_info));
+        m_camera_widget->addListener(m_image_widget.get());
 
-        CameraWidget *cameraWidget = new CameraWidget(camera_info);
-        cameraWidget->addListener(m_image_widget);
+        m_image_widget->showMaximized();
+    }
 
-        QVBoxLayout *mainLayout = new QVBoxLayout;
-        m_main_widget->setLayout(mainLayout);
-
-        mainLayout->addWidget(this->m_image_widget);
-        mainLayout->addWidget(this->m_Widget);
-
-        m_main_widget->showMaximized();
+    OpenGLMainWindow::~OpenGLMainWindow()
+    {
     }
 
     void OpenGLMainWindow::mainWidgetDestroyed() {
@@ -52,10 +44,10 @@ namespace capture
     void OpenGLMainWindow::setScreen(QScreen* screen) {
         QRect screen_geometry = screen->geometry();
 //        QRect virtual_geometry = screen->virtualGeometry();
-        m_main_widget->move(screen_geometry.x(), screen_geometry.y());
-        m_main_widget->resize(screen_geometry.width(), screen_geometry.height());
-        m_main_widget->windowHandle()->setScreen(screen);
-        m_main_widget->showFullScreen();
+        m_image_widget->move(screen_geometry.x(), screen_geometry.y());
+        m_image_widget->resize(screen_geometry.width(), screen_geometry.height());
+        m_image_widget->windowHandle()->setScreen(screen);
+        m_image_widget->showFullScreen();
     }
 
 }

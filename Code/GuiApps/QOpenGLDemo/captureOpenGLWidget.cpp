@@ -94,6 +94,7 @@ void OpenGLWidget::cleanup()
   glDeleteShader(m_FragmentShader);
   glDeleteShader(m_VertexShader);
   glDeleteBuffers(1, &m_VBO);
+  glDeleteBuffers(1, &m_element_buffer_id);
   glDeleteVertexArrays(1, &m_VAO);
 
   this->doneCurrent();

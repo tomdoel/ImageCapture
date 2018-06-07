@@ -140,16 +140,17 @@ void OpenGLWidget::initializeGL()
   m_ColourAttribute = glGetAttribLocation(m_ShaderProgram, "color");
   glEnableVertexAttribArray(m_ColourAttribute);
   glVertexAttribPointer(m_ColourAttribute, 3, GL_FLOAT, GL_FALSE, 5*sizeof(float), (void*)(2*sizeof(float)));
+
+  const qreal retinaScale = this->devicePixelRatio();
+  glViewport(0, 0, width() * retinaScale, height() * retinaScale);
+
+  glClearColor(0.0f, 0.0f, 0.0f, m_IsTransparent ? 0 : 1);
 }
 
 
 //-----------------------------------------------------------------------------
 void OpenGLWidget::paintGL()
 {
-  const qreal retinaScale = this->devicePixelRatio();
-  glViewport(0, 0, width() * retinaScale, height() * retinaScale);
-
-  glClearColor(0.0f, 0.0f, 0.0f, m_IsTransparent ? 0 : 1);
   glClear(GL_COLOR_BUFFER_BIT);
 
   glDrawArrays(GL_TRIANGLES, 0, 3);

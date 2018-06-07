@@ -246,12 +246,12 @@ void OpenGLImage::initializeGL()
     glBindTexture(GL_TEXTURE_2D, m_texture_id);
     checkError();
 
-    int width = 0;
-    int height = 0;
+    int texture_width = 0;
+    int texture_height = 0;
     m_last_width = 0;
     m_last_height = 0;
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, texture_width, texture_height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
     checkError();
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -262,13 +262,17 @@ void OpenGLImage::initializeGL()
     checkError();
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     checkError();
+
+    const qreal retinaScale = this->devicePixelRatio();
+    glViewport(0, 0, width() * retinaScale, height() * retinaScale);
+
+    glClearColor(0.0f, 0.0f, 0.0f, m_IsTransparent ? 0 : 1);
 }
 
 
 //-----------------------------------------------------------------------------
 void OpenGLImage::paintGL()
 {
-
     glClear(GL_COLOR_BUFFER_BIT);
     checkError();
 
@@ -279,19 +283,14 @@ void OpenGLImage::paintGL()
     checkError();
 }
 
-void OpenGLImage::checkError() {
-    GLenum err;
-    while((err = glGetError()) != GL_NO_ERROR) {
-      qInfo() << "OpenGL Error:" << err;
-    }
-}
-
 
 //-----------------------------------------------------------------------------
 
 void OpenGLImage::resizeGL(int width, int height)
 {
 }
+
+//-----------------------------------------------------------------------------
 
 void OpenGLImage::updateImage(QImage *image)
 {
@@ -313,5 +312,16 @@ void OpenGLImage::updateImage(QImage *image)
     checkError();
     update();
 }
+
+//-----------------------------------------------------------------------------
+
+void OpenGLImage::checkError() {
+    GLenum err;
+    while((err = glGetError()) != GL_NO_ERROR) {
+      qInfo() << "OpenGL Error:" << err;
+    }
+}
+
+
 
 }

@@ -40,10 +40,11 @@ namespace capture
 static const char *fragmentShaderSource =
     "#version 330 core\n"
     "in vec3 Color;\n"
+    "in vec2 Texcoord;\n"
     "out vec4 outColor;\n"
     "void main()\n"
     "{\n"
-    "  outColor = vec4(Color, 1.0);;\n"
+    "  outColor = vec4(Color, 1.0);\n"
     "}\n";
 
 //-----------------------------------------------------------------------------

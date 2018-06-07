@@ -22,18 +22,21 @@ namespace capture
 bool OpenGLWidget::m_IsTransparent = false;
 
 static const char *vertexShaderSource =
-    "#version 150 core\n"
+    "#version 330 core\n"
     "in vec2 position;\n"
     "in vec3 color;\n"
+    "in vec2 texcoord;\n"
     "out vec3 Color\n;"
+    "out vec2 Texcoord;\n"
     "void main()\n"
     "{\n"
-    "  Color = color;"
+    "  Color = color;\n"
+    "  Texcoord = texcoord;\n"
     "  gl_Position = vec4(position, 0.0, 1.0);\n"
     "}\n";
 
 static const char *fragmentShaderSource =
-    "#version 150 core\n"
+    "#version 330 core\n"
     "in vec3 Color;\n"
     "out vec4 outColor;\n"
     "void main()\n"
@@ -111,9 +114,9 @@ void OpenGLWidget::initializeGL()
   glGenBuffers(1, &m_VBO);
 
   GLfloat vertices[] = {
-     0.0f,  0.5f, 1.0f, 0.0f, 0.0f, // Vertex 1: Red
-     0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // Vertex 2: Green
-    -0.5f, -0.5f, 0.0f, 0.0f, 1.0f  // Vertex 3: Blue
+     0.0f,  0.5f, 1.0f, 0.0f, 0.0f,  0.0f,  0.5f, // Vertex 1: Red
+     0.5f, -0.5f, 0.0f, 1.0f, 0.0f,  0.5f, -0.5f, // Vertex 2: Green
+    -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, -0.5f, -0.5f, // Vertex 3: Blue
   };
 
   glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
@@ -136,10 +139,15 @@ void OpenGLWidget::initializeGL()
 
   m_PositionAttribute = glGetAttribLocation(m_ShaderProgram, "position");
   glEnableVertexAttribArray(m_PositionAttribute);
-  glVertexAttribPointer(m_PositionAttribute, 2, GL_FLOAT, GL_FALSE, 5*sizeof(float), 0);
+  glVertexAttribPointer(m_PositionAttribute, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), 0);
+
   m_ColourAttribute = glGetAttribLocation(m_ShaderProgram, "color");
   glEnableVertexAttribArray(m_ColourAttribute);
-  glVertexAttribPointer(m_ColourAttribute, 3, GL_FLOAT, GL_FALSE, 5*sizeof(float), (void*)(2*sizeof(float)));
+  glVertexAttribPointer(m_ColourAttribute, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(2*sizeof(float)));
+
+  GLint texAttrib = glGetAttribLocation(m_ShaderProgram, "texcoord");
+  glEnableVertexAttribArray(texAttrib);
+  glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), (void*)(5 * sizeof(GLfloat)));
 
   const qreal retinaScale = this->devicePixelRatio();
   glViewport(0, 0, width() * retinaScale, height() * retinaScale);

@@ -24,7 +24,7 @@ namespace capture
 
     // Shader sources
     const GLchar* vertexShaderSource = R"glsl(
-        #version 150 core
+        #version 330 core
         in vec2 position;
         in vec3 color;
         in vec2 texcoord;
@@ -39,7 +39,7 @@ namespace capture
     )glsl";
 
     const GLchar* fragmentShaderSource = R"glsl(
-        #version 150 core
+        #version 330 core
         in vec3 Color;
         in vec2 Texcoord;
         out vec4 outColor;

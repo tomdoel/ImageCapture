@@ -6,7 +6,6 @@
 #include <string>
 
 #include "cameradetector.h"
-#include "captureOpenGLWidget.h"
 #include "captureOpenGLMainWindow.h"
 #include "screencontroller.h"
 #include "screenmapper.h"

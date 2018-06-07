@@ -12,14 +12,6 @@
 
 =============================================================================*/
 
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QSurfaceFormat>
-#include "ImageCaptureConfigure.h"
-#include "captureOpenGLWidget.h"
-#include "captureOpenGLMainWindow.h"
-#include "cameradetector.h"
-#include "capturecontroller.h"
 #include "captureapplication.h"
 
 int main(int argc, char *argv[])

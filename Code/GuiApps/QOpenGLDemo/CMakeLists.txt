@@ -21,7 +21,6 @@ set(APP_UIS
 )
 
 set(APP_SRCS
-  captureOpenGLWidget.cpp
   captureOpenGLMainWindow.cpp
   captureCameraWidget.cpp
   captureOpenGLImage.cpp
@@ -38,7 +37,6 @@ set(APP_SRCS
 )
 
 set(APP_MOC_HDRS
-  captureOpenGLWidget.h
   captureOpenGLImage.h
   captureLabelImage.h
   outputdisplaycontroller.h

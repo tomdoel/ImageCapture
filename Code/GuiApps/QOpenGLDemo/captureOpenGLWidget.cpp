@@ -19,21 +19,23 @@
 namespace capture
 {
 
-bool OpenGLWidget::m_IsTransparent = false;
+    bool OpenGLWidget::m_IsTransparent = false;
 
-static const char *vertexShaderSource =
-    "#version 330 core\n"
-    "in vec2 position;\n"
-    "in vec3 color;\n"
-    "in vec2 texcoord;\n"
-    "out vec3 Color\n;"
-    "out vec2 Texcoord;\n"
-    "void main()\n"
-    "{\n"
-    "  Color = color;\n"
-    "  Texcoord = texcoord;\n"
-    "  gl_Position = vec4(position, 0.0, 1.0);\n"
-    "}\n";
+    // Shader sources
+    static const GLchar* vertexShaderSource = R"glsl(
+        #version 330 core
+        in vec2 position;
+        in vec3 color;
+        in vec2 texcoord;
+        out vec3 Color;
+        out vec2 Texcoord;
+        void main()
+        {
+            Color = color;
+            Texcoord = texcoord;
+            gl_Position = vec4(position, 0.0, 1.0);
+        }
+    )glsl";
 
 static const char *fragmentShaderSource =
     "#version 330 core\n"

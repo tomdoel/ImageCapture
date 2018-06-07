@@ -127,6 +127,15 @@ void OpenGLWidget::initializeGL()
   glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+  glGenBuffers(1, &m_element_buffer_id);
+
+  GLuint elements_traingle[] = {
+      0, 1, 2
+  };
+
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_element_buffer_id);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements_traingle), elements_traingle, GL_STATIC_DRAW);
+
   m_VertexShader = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(m_VertexShader, 1, &vertexShaderSource, NULL);
   glCompileShader(m_VertexShader);
@@ -164,9 +173,9 @@ void OpenGLWidget::initializeGL()
 //-----------------------------------------------------------------------------
 void OpenGLWidget::paintGL()
 {
-  glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-  glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 

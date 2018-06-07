@@ -62,6 +62,7 @@ private:
   GLuint      m_ShaderProgram;
   GLuint      m_PositionAttribute;
   GLuint      m_ColourAttribute;
+  GLuint      m_element_buffer_id;
 };
 
 } // end namespace

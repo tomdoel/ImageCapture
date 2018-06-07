@@ -37,15 +37,17 @@ namespace capture
         }
     )glsl";
 
-static const char *fragmentShaderSource =
-    "#version 330 core\n"
-    "in vec3 Color;\n"
-    "in vec2 Texcoord;\n"
-    "out vec4 outColor;\n"
-    "void main()\n"
-    "{\n"
-    "  outColor = vec4(Color, 1.0);\n"
-    "}\n";
+    static const GLchar* fragmentShaderSource = R"glsl(
+        #version 330 core
+        in vec3 Color;
+        in vec2 Texcoord;
+        out vec4 outColor;
+        uniform sampler2D tex;
+        void main()
+        {
+            outColor = vec4(Color, 1.0);
+        }
+     )glsl";
 
 //-----------------------------------------------------------------------------
 OpenGLWidget::OpenGLWidget(QWidget *parent)

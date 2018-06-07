@@ -28,15 +28,15 @@ namespace capture
         in vec2 position;
         in vec3 color;
         in vec2 texcoord;
-        in float useTex;
-        out float UseTex;
+        in float usetex;
+        out float Usetex;
         out vec3 Color;
         out vec2 Texcoord;
         void main()
         {
             Color = color;
             Texcoord = texcoord;
-            UseTex = useTex;
+            Usetex = usetex;
             gl_Position = vec4(position, 0.0, 1.0);
         }
     )glsl";
@@ -45,12 +45,19 @@ namespace capture
         #version 330 core
         in vec3 Color;
         in vec2 Texcoord;
-        in float useTex;
+        in float Usetex;
         out vec4 outColor;
         uniform sampler2D tex;
         void main()
         {
-            outColor = texture(tex, Texcoord);
+            if (Usetex > 0.0)
+            {
+                outColor = texture(tex, Texcoord);
+            }
+            else
+            {
+                outColor = vec4(Color, 1.0);
+            }
         }
     )glsl";
 
@@ -125,11 +132,15 @@ void OpenGLImage::initializeGL()
          1.0f,  1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, // Top right
          1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, // Bottom right
         -1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, // Bottom left
+         0.0f,  0.5f, 1.0f, 0.0f, 0.0f,  0.0f,  0.5f, 0.0f, // Vertex 1: Red
+         0.5f, -0.5f, 0.0f, 1.0f, 0.0f,  0.5f, -0.5f, 0.0f, // Vertex 2: Green
+        -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, -0.5f, -0.5f, 0.0f, // Vertex 3: Blue
     };
 
     GLuint video_elements[] = {
         0, 1, 2,
-        2, 3, 0
+        2, 3, 0,
+        4, 5, 6,
     };
 
     GLfloat overlay_vertices[] = {
@@ -247,11 +258,12 @@ void OpenGLImage::initializeGL()
     glEnableVertexAttribArray(texAttrib);
     glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(5 * sizeof(GLfloat)));
 
-    GLint useTexAttrib = glGetAttribLocation(m_shader_program_id, "useTex");
+    GLint useTexAttrib = glGetAttribLocation(m_shader_program_id, "usetex");
     checkError();
     glEnableVertexAttribArray(useTexAttrib);
     checkError();
     glVertexAttribPointer(useTexAttrib, 1, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(7 * sizeof(GLfloat)));
+    checkError();
 
     glGenTextures(1, &m_texture_id);
     checkError();
@@ -314,7 +326,7 @@ void OpenGLImage::paintGL()
 
     // Video
     glBindVertexArray(m_video_vertex_array_id);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)0);
+    glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, (void*)0);
 
     // Overlay
     glBindVertexArray(m_overlay_vertex_array_id);

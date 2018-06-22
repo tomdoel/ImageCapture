@@ -17,7 +17,6 @@ set(TMP_DIR ${CMAKE_BINARY_DIR}/Testing/Temporary)
 
 set(TEST_CASES
   captureBasicTest
-  captureCommandLineArgsTest
 )
 
 foreach(_test_case ${TEST_CASES})
@@ -43,7 +42,6 @@ endif()
 ##################################################################################################
 
 add_test(NoArgs ${EXECUTABLE_OUTPUT_PATH}/captureBasicTest)
-add_test(1File ${EXECUTABLE_OUTPUT_PATH}/captureCommandLineArgsTest ${DATA_DIR}/input.txt)
 if (IMAGECAPTURE_USE_CUDA)
   add_test(Cuda ${EXECUTABLE_OUTPUT_PATH}/mpCudaTest)
 endif()

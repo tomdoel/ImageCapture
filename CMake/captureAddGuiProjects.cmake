@@ -16,7 +16,7 @@
 
 option(BUILD_QtVTKDemo "Build QtVTKDemo Gui." OFF)
 option(BUILD_QMLDemo "Build QMLDemo Gui." OFF)
-option(BUILD_QOpenGLDemo "Build QOpenGLDemo Gui." OFF)
+option(BUILD_QOpenGLDemo "Build QOpenGLDemo Gui." ON)
 option(BUILD_QMLVLDemo "(not finished) Build QML with VL Demo Gui." OFF)
 mark_as_advanced(BUILD_QMLVLDemo)
 

@@ -67,7 +67,7 @@ include(captureMacroCreateGuiApplication)
 ######################################################################
 option(BUILD_TESTING "Build Unit tests." ON)
 option(BUILD_SHARED_LIBS "Build Shared Libraries" OFF)
-option(BUILD_SUPERBUILD "Build IMAGECAPTURE and the projects it depends on via SuperBuild.cmake." ON)
+option(BUILD_SUPERBUILD "Build IMAGECAPTURE and the projects it depends on via SuperBuild.cmake." OFF)
 option(IMAGECAPTURE_USE_OPENMP "Use OpenMP." OFF)
 option(IMAGECAPTURE_USE_CUDA "Use CUDA." OFF)
 option(IMAGECAPTURE_DELAYLOAD_CUDA "(Windows only) If enabled the CUDA DLLs will be a soft delay-load dependency and IMAGECAPTURE can run without them." OFF)

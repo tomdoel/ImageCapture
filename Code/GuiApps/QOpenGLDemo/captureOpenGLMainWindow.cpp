@@ -24,7 +24,7 @@ namespace capture
     {
         m_id = camera_info.deviceName();
         m_image_widget = std::unique_ptr<OpenGLImage>(new OpenGLImage);
-        m_image_widget->setAttribute( Qt::WA_DeleteOnClose );
+//        m_image_widget->setAttribute( Qt::WA_DeleteOnClose );
         connect(m_image_widget.get(), &QWidget::destroyed, this, &OpenGLMainWindow::mainWidgetDestroyed);
 
         m_camera_widget = std::unique_ptr<CameraWidget>(new CameraWidget(camera_info));
@@ -35,6 +35,7 @@ namespace capture
 
     OpenGLMainWindow::~OpenGLMainWindow()
     {
+        disconnect(m_image_widget.get(), &QWidget::destroyed, this, &OpenGLMainWindow::mainWidgetDestroyed);
     }
 
     void OpenGLMainWindow::mainWidgetDestroyed() {

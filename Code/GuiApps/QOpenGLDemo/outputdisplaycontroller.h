@@ -31,6 +31,7 @@ namespace capture {
         private:
             std::map<std::string, std::unique_ptr<OpenGLMainWindow> > m_capture_windows;
 
+        private slots:
             void WindowClosed(QString id);
 
         signals:

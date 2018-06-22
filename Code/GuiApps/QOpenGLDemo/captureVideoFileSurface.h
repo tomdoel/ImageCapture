@@ -17,6 +17,7 @@ class VideoFileSurface : public QAbstractVideoSurface
 {
     public:
         VideoFileSurface();
+        ~VideoFileSurface();
 
         QList<QVideoFrame::PixelFormat> supportedPixelFormats(
                 QAbstractVideoBuffer::HandleType handleType) const;

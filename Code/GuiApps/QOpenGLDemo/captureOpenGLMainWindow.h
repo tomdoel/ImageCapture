@@ -40,7 +40,6 @@ namespace capture
             OpenGLMainWindow(const QCameraInfo&);
             ~OpenGLMainWindow();
 
-            void show();
             void setScreen(QScreen* screen);
 
         signals:

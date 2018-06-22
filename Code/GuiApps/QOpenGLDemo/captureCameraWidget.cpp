@@ -10,12 +10,15 @@ namespace capture {
 
     CameraWidget::CameraWidget(const QCameraInfo& camera_info)
     {
-        QCamera *camera = new QCamera(camera_info);
+        m_camera = std::unique_ptr<QCamera>(new QCamera(camera_info));
 
-        m_video_file_surface = new VideoFileSurface();
-        camera->setViewfinder(m_video_file_surface);
+        m_video_file_surface = std::unique_ptr<VideoFileSurface>(new VideoFileSurface());
+        m_camera->setViewfinder(m_video_file_surface.get());
 
-        camera->start();
+        m_camera->start();
+    }
+
+    CameraWidget::~CameraWidget() {
     }
 
     void CameraWidget::addListener(VideoOutput *output)

@@ -33,9 +33,14 @@ To compile using QT Creator (tested using QT 5.10.1, QT Creator 4.6.0, macOS Hig
  * In you don't have a QT kit configured, configure it now.
  * Select your QT kit and click Configure project
  * Click on "Projects" n the left bar. This will show you the CMake variables which you can change as required - in almost all cases you can leave them as the defaults.
- * Set your build folder. This is where the intermediate and binary files will go. Keep this in a separate directory to your source files
- * If the `QT5_DIR` is not found, then you can set the `CMAKE_PREFIX_PATH` variable to point to your QT installation. To do this, click Advanced to show the `CMAKE_PREFIX_PATH` variable (or create it if it doesn't exist) and set to the folder containing your QT installation. This should point to the subfolder containing the platform name, e.g. if your QT is installed under `/somewhere/Qt/5.10.1` then on macOS the path would be `/somewhere/5.10.1/clang_64`
-
+ * Under *Build Settings*:
+   * Set your build folder. This is where the intermediate and binary files will go. Keep this in a separate directory to your source files
+   * If the `QT5_DIR` is not found, then you can set the `CMAKE_PREFIX_PATH` variable to point to your QT installation. To do this, click Advanced to show the `CMAKE_PREFIX_PATH` variable (or create it if it doesn't exist) and set to the folder containing your QT installation. This should point to the subfolder containing the platform name, e.g. if your QT is installed under `/somewhere/Qt/5.10.1` then on macOS the path would be `/somewhere/5.10.1/clang_64`
+   * Click Apply configuration changes if required
+   * Fix any CMake issues (highlighted in red)
+ * Under *Run Settings*
+   * Change *Run Configuration* to QOpenGlDemo
+ * Build the project
 
 Credits
 -------

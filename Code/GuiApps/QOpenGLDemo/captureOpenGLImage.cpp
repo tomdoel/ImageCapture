@@ -173,7 +173,7 @@ void OpenGLImage::initializeGL()
         std::vector<GLchar> error_text(maxLength);
         glGetShaderInfoLog(m_vertex_shader_id, maxLength, &maxLength, &error_text[0]);
 
-        qInfo() << "glCompileShader(vertexShader): Error:" << error_text;
+        qInfo("glCompileShader(vertexShader): Error: %s", &error_text[0]);
     }
     checkError();
 
@@ -195,7 +195,7 @@ void OpenGLImage::initializeGL()
         std::vector<GLchar> error_text(maxLength);
         glGetShaderInfoLog(m_fragment_shader_id, maxLength, &maxLength, &error_text[0]);
 
-        qInfo() << "glCompileShader(fragmentShader): Error:" << error_text;
+        qInfo("glCompileShader(fragmentShader): Error: %s", &error_text[0]);
     }
     checkError();
 

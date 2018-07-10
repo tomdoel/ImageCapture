@@ -29,7 +29,7 @@ Linux build:
     - make -j 1
 
   tags:
-    - gift-linux
+    - shared-linux
 
 
 Mac build:

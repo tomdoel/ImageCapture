@@ -23,7 +23,7 @@ Linux build:
     - mkdir -p ${build_dir}
     - cd ${build_dir}
     - cmake -DBUILD_QOpenGLDemo:BOOL=TRUE
-          -DCMAKE_PREFIX_PATH:PATH=/opt/qt5/5.5/gcc_64
+          -DCMAKE_PREFIX_PATH:PATH=/opt/Qt5/5.11.1/gcc_64
           -DBUILD_TESTING:BOOL=ON
           ${src_dir}
     - make -j 1

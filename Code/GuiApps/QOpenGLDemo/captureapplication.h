@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QApplication>
 #include <QScreen>
+#include <memory>
 
 namespace capture {
     class CaptureController;

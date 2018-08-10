@@ -20,7 +20,6 @@ Linux build:
   stage: build
 
   script:
-    - glxinfo
     - mkdir -p ${build_dir}
     - cd ${build_dir}
     - cmake -DBUILD_QOpenGLDemo:BOOL=TRUE

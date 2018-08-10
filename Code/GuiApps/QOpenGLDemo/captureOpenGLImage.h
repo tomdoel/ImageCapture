@@ -14,6 +14,7 @@
 
 #ifndef mpOpenGLImage_h
 #define mpOpenGLImage_h
+#define GL_GLEXT_PROTOTYPES
 
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
